@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapsuleCorpCoffee", "CapsuleCorpCoffee\CapsuleCorpCoffee.csproj", "{8ECEC880-F84E-422B-9631-289203282F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapsuleCorpCoffee.Tests", "CapsuleCorpCoffee.Tests\CapsuleCorpCoffee.Tests.csproj", "{2989B65B-20BA-4A95-A1EB-D96BE82BBB04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ECEC880-F84E-422B-9631-289203282F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ECEC880-F84E-422B-9631-289203282F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ECEC880-F84E-422B-9631-289203282F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ECEC880-F84E-422B-9631-289203282F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2989B65B-20BA-4A95-A1EB-D96BE82BBB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2989B65B-20BA-4A95-A1EB-D96BE82BBB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2989B65B-20BA-4A95-A1EB-D96BE82BBB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2989B65B-20BA-4A95-A1EB-D96BE82BBB04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94D041B4-01B1-4012-8E4A-1E4E51237045}
+	EndGlobalSection
+EndGlobal
