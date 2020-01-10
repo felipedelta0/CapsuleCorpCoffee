@@ -46,16 +46,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Controles\ItemParaReceita.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ItemParaReceita.Designer.cs">
+      <DependentUpon>ItemParaReceita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL_MUDAR\Models\Avaliacao.cs" />
+    <Compile Include="DAL_MUDAR\Models\TipoCapsula.cs" />
+    <Compile Include="DAL_MUDAR\Models\Estoque.cs" />
+    <Compile Include="DAL_MUDAR\Models\Receita.cs" />
+    <Compile Include="Forms\CadastrarReceita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\CadastrarReceita.Designer.cs">
+      <DependentUpon>CadastrarReceita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditorTipoCapsulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditorTipoCapsulas.Designer.cs">
+      <DependentUpon>EditorTipoCapsulas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TiposCapsulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TiposCapsulas.Designer.cs">
+      <DependentUpon>TiposCapsulas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Controles\ItemParaReceita.resx">
+      <DependentUpon>ItemParaReceita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CadastrarReceita.resx">
+      <DependentUpon>CadastrarReceita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditorTipoCapsulas.resx">
+      <DependentUpon>EditorTipoCapsulas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TiposCapsulas.resx">
+      <DependentUpon>TiposCapsulas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,7 +125,8 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL_MUDAR\Models\" />
+    <Folder Include="Recursos\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

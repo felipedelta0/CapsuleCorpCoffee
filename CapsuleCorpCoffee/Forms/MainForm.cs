@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CapsuleCorpCoffee.Forms;
 using Npgsql;
 
 namespace CapsuleCorpCoffee
@@ -36,6 +36,32 @@ namespace CapsuleCorpCoffee
                 MessageBox.Show(ex.Message, "Erro");
             }
             
+        }
+
+        // Gerenciar os Tipos de Cápsulas de Café
+        private void tiposDeCapsulasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TiposCapsulas formTipoCapsulas = new TiposCapsulas();
+            formTipoCapsulas.ShowDialog();
+        }
+
+        // Fazer uma receita já existente
+        private void fazerReceitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Cadastrar Nova Receita
+        private void cadastrarReceitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastrarReceita formCadastrarReceira = new CadastrarReceita();
+            formCadastrarReceira.ShowDialog();
+        }
+
+        // Gerenciar o Estoque
+        private void gerenciarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
