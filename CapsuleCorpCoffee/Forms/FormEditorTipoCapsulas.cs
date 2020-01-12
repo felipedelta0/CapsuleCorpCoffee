@@ -1,24 +1,20 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
-    public partial class EditorTipoCapsulas : Form
+    public partial class FormEditorTipoCapsulas : Form
     {
+        #region Propriedades, Váriaveis e Atributos
         private string Descricao;
         private int Forca;
         private TipoCapsula Capsula;
         private bool IsEditar;
+        #endregion
 
-        public EditorTipoCapsulas()
+        #region Construtores
+        public FormEditorTipoCapsulas()
         {
             InitializeComponent();
 
@@ -26,8 +22,7 @@ namespace CapsuleCorpCoffee.Forms
             IsEditar = false;
         }
 
-        // Construtor de Edição
-        public EditorTipoCapsulas(TipoCapsula tipoCapsula)
+        public FormEditorTipoCapsulas(TipoCapsula tipoCapsula)
         {
             InitializeComponent();
             Capsula = tipoCapsula;
@@ -37,7 +32,9 @@ namespace CapsuleCorpCoffee.Forms
 
             this.Text = "Edição de Tipo de Cápsula";
         }
+        #endregion
 
+        #region Eventos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Descricao = txtDescricao.Text.Trim();
@@ -57,7 +54,14 @@ namespace CapsuleCorpCoffee.Forms
                 Close();
             }
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        #endregion
+
+        #region Métodos
         private bool ValidarCampos()
         {
             if (Descricao.Length == 0)
@@ -74,10 +78,6 @@ namespace CapsuleCorpCoffee.Forms
 
             return true;
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }

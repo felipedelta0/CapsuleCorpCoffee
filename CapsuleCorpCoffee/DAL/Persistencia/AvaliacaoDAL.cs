@@ -3,15 +3,12 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapsuleCorpCoffee.DAL.Persistencia
 {
     class AvaliacaoDAL : Conexao
     {
-        // CRUD
+        #region CREATE
         public void Inserir(Avaliacao avaliacao)
         {
             try
@@ -33,7 +30,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region READ
         public Avaliacao SelecionarPorID(int id)
         {
             try
@@ -171,7 +170,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region UPDATE
         public void Atualizar(Avaliacao item)
         {
             try
@@ -194,7 +195,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region DELETE
         public void Deletar(Avaliacao item)
         {
             try
@@ -213,5 +216,6 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
     }
 }

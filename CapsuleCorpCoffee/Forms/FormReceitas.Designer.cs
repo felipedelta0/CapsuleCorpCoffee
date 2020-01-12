@@ -35,6 +35,7 @@
             this.coLReceita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTiposCapsulas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQuantidadeCapsulas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNotaMedia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -64,7 +65,8 @@
             this.colID,
             this.coLReceita,
             this.colTiposCapsulas,
-            this.colQuantidadeCapsulas});
+            this.colQuantidadeCapsulas,
+            this.colNotaMedia});
             this.dgvReceitas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvReceitas.Location = new System.Drawing.Point(16, 32);
             this.dgvReceitas.MultiSelect = false;
@@ -79,7 +81,7 @@
             this.dgvReceitas.ShowEditingIcon = false;
             this.dgvReceitas.ShowRowErrors = false;
             this.dgvReceitas.Size = new System.Drawing.Size(555, 252);
-            this.dgvReceitas.TabIndex = 1;
+            this.dgvReceitas.TabIndex = 0;
             // 
             // colID
             // 
@@ -105,6 +107,12 @@
             this.colQuantidadeCapsulas.Name = "colQuantidadeCapsulas";
             this.colQuantidadeCapsulas.ReadOnly = true;
             // 
+            // colNotaMedia
+            // 
+            this.colNotaMedia.HeaderText = "Avaliação Média";
+            this.colNotaMedia.Name = "colNotaMedia";
+            this.colNotaMedia.ReadOnly = true;
+            // 
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(586, 109);
@@ -120,7 +128,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(586, 138);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 4;
+            this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -130,7 +138,7 @@
             this.btnSair.Location = new System.Drawing.Point(586, 261);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 5;
+            this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -140,7 +148,7 @@
             this.btnFazer.Location = new System.Drawing.Point(586, 32);
             this.btnFazer.Name = "btnFazer";
             this.btnFazer.Size = new System.Drawing.Size(75, 23);
-            this.btnFazer.TabIndex = 6;
+            this.btnFazer.TabIndex = 1;
             this.btnFazer.Text = "Fazer";
             this.btnFazer.UseVisualStyleBackColor = true;
             this.btnFazer.Click += new System.EventHandler(this.btnFazer_Click);
@@ -176,10 +184,11 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnFazer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn coLReceita;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTiposCapsulas;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQuantidadeCapsulas;
-        private System.Windows.Forms.Button btnFazer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNotaMedia;
     }
 }

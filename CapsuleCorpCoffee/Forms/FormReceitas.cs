@@ -1,23 +1,20 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormReceitas : Form
     {
+        #region Construtores
         public FormReceitas()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Eventos
         private void FormReceitas_Load(object sender, EventArgs e)
         {
             AtualizarView();
@@ -25,7 +22,7 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            CadastrarReceita formEditor = new CadastrarReceita();
+            FormCadastrarReceita formEditor = new FormCadastrarReceita();
 
             DialogResult res = formEditor.ShowDialog();
 
@@ -61,11 +58,20 @@ namespace CapsuleCorpCoffee.Forms
             }
         }
 
+        private void btnFazer_Click(object sender, EventArgs e)
+        {
+            FormFazerReceita form = new FormFazerReceita();
+            DialogResult retorno = form.ShowDialog();
+            AtualizarView();
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
 
+        #region Métodos
         private void AtualizarView()
         {
             int index = PegarIndexDeSelecao();
@@ -88,7 +94,8 @@ namespace CapsuleCorpCoffee.Forms
 
             foreach (Receita item in receitas)
             {
-                dgvReceitas.Rows.Add(item.ID.ToString(), item.Descricao, item.MostrarCapsulas, item.QuantidadeTotalCapsulas);
+                double notaMedia = Avaliacao.ObterMedia(item.ID);
+                dgvReceitas.Rows.Add(item.ID, item.Descricao, item.MostrarCapsulas, item.QuantidadeTotalCapsulas, notaMedia > -1 ? notaMedia.ToString("N2") : "");
             }
         }
 
@@ -98,72 +105,6 @@ namespace CapsuleCorpCoffee.Forms
             Int32.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
             return itemID;
         }
-
-        private void btnFazer_Click(object sender, EventArgs e)
-        {
-            int itemID = PegarItemID();
-
-            if (itemID > 0)
-            {
-                Receita receita = new Receita(itemID);
-                Dictionary<ReceitaItem, List<Estoque>> estoqueItems = new Dictionary<ReceitaItem, List<Estoque>>();
-
-                foreach (ReceitaItem item in receita.Items)
-                {
-                    estoqueItems.Add(item, Estoque.PegarEstoquePorItemQuantidade(item));
-                }
-
-                if (ChecarQuantidades(estoqueItems))
-                {
-                    FazerReceita(receita, estoqueItems);
-                    ChamarAvaliacao(receita);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Não existe itens suficientes em estoque para fazer essa receita.", "Estoque insuficiente.");
-                    return;
-                }
-            }
-        }
-
-        public void ChamarAvaliacao(Receita receita)
-        {
-            FormAvaliacao form = new FormAvaliacao(receita);
-            DialogResult retorno = form.ShowDialog();
-        }
-
-        private bool ChecarQuantidades(Dictionary<ReceitaItem, List<Estoque>> listagem)
-        {
-            foreach (KeyValuePair<ReceitaItem, List<Estoque>> etapa in listagem)
-            {
-                int quantidade = 0;
-
-                foreach (Estoque est in etapa.Value)
-                {
-                    quantidade += est.Quantidade;
-                }
-
-                if (quantidade < etapa.Key.Quantidade)
-                    return false;
-            }
-            return true;
-        }
-
-        private void FazerReceita(Receita receita, Dictionary<ReceitaItem, List<Estoque>> estoqueItens)
-        {
-
-            foreach (ReceitaItem item in receita.Items)
-            {
-                int faltante = item.Quantidade;
-                List<Estoque> lista = estoqueItens[item];
-                foreach (Estoque itemEstoque in lista)
-                {
-                    faltante = itemEstoque.AbaixaEstoque(Math.Abs(faltante));
-                    if (faltante == 0)
-                        break;
-                }
-            }
-        }
+        #endregion
     }
 }

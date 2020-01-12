@@ -1,23 +1,20 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
-    public partial class TiposCapsulas : Form
+    public partial class FormTiposCapsulas : Form
     {
-        public TiposCapsulas()
+        #region Construtores
+        public FormTiposCapsulas()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Eventos
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -30,22 +27,11 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            EditorTipoCapsulas formEditor = new EditorTipoCapsulas();
+            FormEditorTipoCapsulas formEditor = new FormEditorTipoCapsulas();
 
             DialogResult res = formEditor.ShowDialog();
 
             AtualizarView();
-        }
-
-        private void AtualizarView()
-        {
-            int index = PegarIndexDeSelecao();
-
-            List<TipoCapsula> capsulas = new List<TipoCapsula>();
-            capsulas = TipoCapsula.CarregarCapsulas();
-
-            dgvTipoCapsulas.DataSource = capsulas;
-            dgvTipoCapsulas.Rows[index].Selected = true;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -54,27 +40,29 @@ namespace CapsuleCorpCoffee.Forms
 
             if (capsulaID > 0)
             {
-                EditorTipoCapsulas formEditor = new EditorTipoCapsulas(TipoCapsula.CarregarCapsulaPorID(capsulaID));
+                FormEditorTipoCapsulas formEditor = new FormEditorTipoCapsulas(TipoCapsula.CarregarCapsulaPorID(capsulaID));
 
                 DialogResult res = formEditor.ShowDialog();
 
                 AtualizarView();
             }
         }
+        #endregion
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        #region Métodos
+        private void AtualizarView()
         {
-            int capsulaID = PegarIDCapsula();
+            int index = PegarIndexDeSelecao();
 
-            if (capsulaID > 0)
+            List<TipoCapsula> capsulas = new List<TipoCapsula>();
+            capsulas = TipoCapsula.CarregarCapsulas();
+
+            foreach (TipoCapsula capsula in capsulas)
             {
-                bool exclusao = TipoCapsula.ExcluirCapsula(capsulaID);
-
-                if (exclusao)
-                    MessageBox.Show("Tipo de Cápsula excluída com sucesso!");
-
-                AtualizarView();
+                dgvTipoCapsulas.Rows.Add(capsula.ID, capsula.Descricao, capsula.Forca);
             }
+
+            dgvTipoCapsulas.Rows[index].Selected = true;
         }
 
         private int PegarIDCapsula()
@@ -88,5 +76,6 @@ namespace CapsuleCorpCoffee.Forms
         {
             return dgvTipoCapsulas.SelectedRows.Count > 0 ? (dgvTipoCapsulas.SelectedRows[0].Index > 0 ? dgvTipoCapsulas.SelectedRows[0].Index  - 1 : 0) : 0;
         }
+        #endregion
     }
 }

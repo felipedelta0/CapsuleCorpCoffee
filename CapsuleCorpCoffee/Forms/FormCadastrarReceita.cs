@@ -1,27 +1,25 @@
 ﻿using CapsuleCorpCoffee.Controles;
 using CapsuleCorpCoffee.DAL.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
-    public partial class CadastrarReceita : Form
+    public partial class FormCadastrarReceita : Form
     {
+        #region Propriedades, Váriaveis e Atributos
         int Quantidade;
         Receita Receita;
+        #endregion
 
-        public CadastrarReceita()
+        #region Construtores
+        public FormCadastrarReceita()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Eventos
         private void btnEscolher_Click(object sender, EventArgs e)
         {
             string quantidadeString = cmbQuantidadeItens.Text;
@@ -34,15 +32,6 @@ namespace CapsuleCorpCoffee.Forms
 
                 BloqueiaDesbloqueiaTopo();
                 BloqueiaDesbloqueiaRodape();
-            }
-        }
-
-        private void CarregarControles()
-        {
-            for (int flag = 0; flag < Quantidade; flag++)
-            {
-                ItemParaReceita item = new ItemParaReceita();
-                flowControles.Controls.Add(item);
             }
         }
 
@@ -60,18 +49,6 @@ namespace CapsuleCorpCoffee.Forms
             this.Close();
         }
 
-        private void BloqueiaDesbloqueiaTopo()
-        {
-            cmbQuantidadeItens.Enabled = !cmbQuantidadeItens.Enabled;
-            btnEscolher.Enabled = !btnEscolher.Enabled;
-        }
-
-        private void BloqueiaDesbloqueiaRodape()
-        {
-            btnAlterar.Enabled = !btnAlterar.Enabled;
-            btnSalvar.Enabled = !btnSalvar.Enabled;
-        }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -83,6 +60,29 @@ namespace CapsuleCorpCoffee.Forms
             }
             MessageBox.Show("Receita cadastrada com sucesso!", "Sucesso");
             this.Close();
+        }
+        #endregion
+
+        #region Métodos
+        private void CarregarControles()
+        {
+            for (int flag = 0; flag < Quantidade; flag++)
+            {
+                ItemParaReceita item = new ItemParaReceita();
+                flowControles.Controls.Add(item);
+            }
+        }
+
+        private void BloqueiaDesbloqueiaTopo()
+        {
+            cmbQuantidadeItens.Enabled = !cmbQuantidadeItens.Enabled;
+            btnEscolher.Enabled = !btnEscolher.Enabled;
+        }
+
+        private void BloqueiaDesbloqueiaRodape()
+        {
+            btnAlterar.Enabled = !btnAlterar.Enabled;
+            btnSalvar.Enabled = !btnSalvar.Enabled;
         }
 
         private bool ValidarCampos()
@@ -124,5 +124,6 @@ namespace CapsuleCorpCoffee.Forms
                 Receita.Items.Add(item);
             }
         }
+        #endregion
     }
 }

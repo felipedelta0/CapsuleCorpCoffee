@@ -1,19 +1,17 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormEditorItemEstoque : Form
     {
+        #region Propriedades, Váriaveis e Atributos
         private Estoque ItemEstoque;
+        #endregion
+
+        #region Construtores
         public FormEditorItemEstoque()
         {
             ItemEstoque = new Estoque();
@@ -29,7 +27,9 @@ namespace CapsuleCorpCoffee.Forms
 
             InitializeComponent();
         }
+        #endregion
 
+        #region Eventos
         private void FormEditorItemEstoque_Load(object sender, EventArgs e)
         {
             CarregarCapsulas();
@@ -41,29 +41,7 @@ namespace CapsuleCorpCoffee.Forms
                 VerificaCapsulaSelecionada();
             }
 
-            this.cmbCapsula.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
-
-        private void CarregarCapsulas()
-        {
-            List<TipoCapsula> capsulas = TipoCapsula.CarregarCapsulas();
-
-            cmbCapsula.Items.Clear();
-
-            foreach (TipoCapsula capsula in capsulas)
-            {
-                cmbCapsula.Items.Add(capsula);
-            }
-
-            cmbCapsula.SelectedIndex = 0;
-        }
-
-        private void VerificaCapsulaSelecionada()
-        {
-            if (ItemEstoque.IsEditar)
-            {
-                cmbCapsula.SelectedItem = ItemEstoque;
-            }
+            cmbCapsula.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -80,6 +58,32 @@ namespace CapsuleCorpCoffee.Forms
                 this.Close();
             }
         }
+        #endregion
+
+        #region Métodos
+        private void CarregarCapsulas()
+        {
+            List<TipoCapsula> capsulas = TipoCapsula.CarregarCapsulas();
+
+            cmbCapsula.Items.Clear();
+
+            foreach (TipoCapsula capsula in capsulas)
+            {
+                cmbCapsula.Items.Add(capsula);
+            }
+
+            cmbCapsula.DisplayMember = "Descricao";
+
+            cmbCapsula.SelectedIndex = 0;
+        }
+
+        private void VerificaCapsulaSelecionada()
+        {
+            if (ItemEstoque.IsEditar)
+            {
+                cmbCapsula.SelectedItem = ItemEstoque;
+            }
+        }
 
         private bool ValidarCamposEMontar()
         {
@@ -90,6 +94,11 @@ namespace CapsuleCorpCoffee.Forms
                 Int32.TryParse(txtQuantidade.Text.ToString(), out quantidade);
                 DateTime validade = datePicker.Value;
 
+                if (validade < new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day))
+                {
+                    MessageBox.Show("Não é possível inserir cápsulas vencidas..", "Cápsula Vencida");
+                    return false;
+                }
                 if (capsula.ID <= 0)
                 {
                     MessageBox.Show("Cápsula selecionada é inválida.", "Cápsula Inválida");
@@ -113,5 +122,6 @@ namespace CapsuleCorpCoffee.Forms
                 throw new Exception("Erro na validação: " + ex.Message);
             }
         }
+        #endregion
     }
 }

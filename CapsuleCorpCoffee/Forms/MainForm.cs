@@ -1,52 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapsuleCorpCoffee.DAL.Models;
-using CapsuleCorpCoffee.DAL.Persistencia;
 using CapsuleCorpCoffee.Forms;
-
 
 namespace CapsuleCorpCoffee
 {
     public partial class MainForm : Form
     {
+        #region Construtores
         public MainForm()
         {
             InitializeComponent();
         }
+        #endregion
 
-        // Gerenciar os Tipos de Cápsulas de Café
-        private void tiposDeCapsulasToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Eventos
+        private void btnTiposCapsulas_Click(object sender, EventArgs e)
         {
             AbrirTiposCapsulas();
         }
 
-        // Cadastrar Nova Receita
-        private void cadastrarReceitaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnReceitas_Click(object sender, EventArgs e)
         {
             AbrirReceitas();
         }
 
-        // Gerenciar o Estoque
-        private void gerenciarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEstoque_Click(object sender, EventArgs e)
         {
             AbrirEstoque();
         }
+        #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AbrirTiposCapsulas();
-        }
-
+        #region Métodos
         private void AbrirTiposCapsulas()
         {
-            TiposCapsulas formTipoCapsulas = new TiposCapsulas();
+            FormTiposCapsulas formTipoCapsulas = new FormTiposCapsulas();
             formTipoCapsulas.ShowDialog();
         }
 
@@ -61,15 +48,6 @@ namespace CapsuleCorpCoffee
             FormEstoque formEstoque = new FormEstoque();
             formEstoque.ShowDialog();
         }
-
-        private void btnReceitas_Click(object sender, EventArgs e)
-        {
-            AbrirReceitas();
-        }
-
-        private void btnEstoque_Click(object sender, EventArgs e)
-        {
-            AbrirEstoque();
-        }
+        #endregion
     }
 }

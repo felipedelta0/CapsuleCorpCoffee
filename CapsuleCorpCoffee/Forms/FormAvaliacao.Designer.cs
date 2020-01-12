@@ -73,7 +73,7 @@
             this.cmbNota.Location = new System.Drawing.Point(323, 83);
             this.cmbNota.Name = "cmbNota";
             this.cmbNota.Size = new System.Drawing.Size(65, 21);
-            this.cmbNota.TabIndex = 2;
+            this.cmbNota.TabIndex = 1;
             // 
             // label3
             // 
@@ -90,7 +90,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(104, 84);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(142, 20);
-            this.txtUsuario.TabIndex = 4;
+            this.txtUsuario.TabIndex = 0;
             // 
             // label4
             // 
@@ -108,7 +108,7 @@
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(378, 148);
-            this.txtComentario.TabIndex = 6;
+            this.txtComentario.TabIndex = 2;
             // 
             // btnAvaliar
             // 
@@ -116,7 +116,7 @@
             this.btnAvaliar.Location = new System.Drawing.Point(145, 306);
             this.btnAvaliar.Name = "btnAvaliar";
             this.btnAvaliar.Size = new System.Drawing.Size(106, 35);
-            this.btnAvaliar.TabIndex = 7;
+            this.btnAvaliar.TabIndex = 3;
             this.btnAvaliar.Text = "Avaliar!";
             this.btnAvaliar.UseVisualStyleBackColor = true;
             this.btnAvaliar.Click += new System.EventHandler(this.btnAvaliar_Click);

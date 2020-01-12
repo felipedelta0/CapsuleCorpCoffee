@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 
 namespace CapsuleCorpCoffee.DAL.Persistencia
 {
     public class Conexao
     {
+        #region Propriedades
         private string ConnString = "Host=localhost;Username=postgres;Password=postgres;Database=capsulecorpcoffeeDB";
         protected NpgsqlConnection Conn;
         protected NpgsqlCommand Cmd;
         protected NpgsqlDataAdapter Adapter;
+        #endregion
 
+        #region Abertura da Conexão
         protected void AbrirConexao()
         {
             try
@@ -26,7 +25,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
 
+        #region Fechamento da Conexão
         protected void FecharConexao()
         {
             try
@@ -38,5 +39,6 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
     }
 }

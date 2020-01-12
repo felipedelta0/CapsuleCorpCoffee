@@ -1,23 +1,20 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormEstoque : Form
     {
+        #region Construtores
         public FormEstoque()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Eventos
         private void FormEstoque_Load(object sender, EventArgs e)
         {
             AtualizarView();
@@ -76,7 +73,9 @@ namespace CapsuleCorpCoffee.Forms
         {
             this.Close();
         }
+        #endregion
 
+        #region Métodos
         private void AtualizarView()
         {
             int index = PegarIndexDeSelecao();
@@ -99,7 +98,7 @@ namespace CapsuleCorpCoffee.Forms
 
             foreach (Estoque item in estoque)
             {
-                dgvEstoque.Rows.Add(item.ID.ToString(), item.Capsula.Descricao, item.Validade.ToString("dd/MM/yyyy"), item.Quantidade.ToString());
+                dgvEstoque.Rows.Add(item.ID, item.Capsula.Descricao, item.Validade.ToString("dd/MM/yyyy"), item.Quantidade);
             }
         }
 
@@ -109,5 +108,6 @@ namespace CapsuleCorpCoffee.Forms
             Int32.TryParse(dgvEstoque.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
             return itemID;
         }
+        #endregion
     }
 }

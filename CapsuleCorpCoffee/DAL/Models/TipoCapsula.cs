@@ -1,19 +1,16 @@
-﻿using System;
+﻿using CapsuleCorpCoffee.DAL.Persistencia;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using CapsuleCorpCoffee.DAL.Persistencia;
 
 namespace CapsuleCorpCoffee.DAL.Models
 {
     public class TipoCapsula
     {
+        #region Propriedades
         public int ID { get; set; }
         public string Descricao { get; set; }
         public int Forca { get; set; }
-
         private bool IsEditar
         {
             get
@@ -23,12 +20,9 @@ namespace CapsuleCorpCoffee.DAL.Models
                 return false;
             }
         }
+        #endregion
 
-        public override string ToString()
-        {
-            return Descricao;
-        }
-
+        #region Construtores
         public TipoCapsula ()
         {
             ID = -1;
@@ -47,14 +41,18 @@ namespace CapsuleCorpCoffee.DAL.Models
             Descricao = descricao;
             Forca = forca;
         }
+        #endregion
 
+        #region Métodos da Classe
         public void PreencherDados(DataRow row)
         {
             ID = Int32.Parse(row["ID"].ToString());
             Descricao = row["Descricao"].ToString();
             Forca = Int32.Parse(row["Forca"].ToString());
         }
+        #endregion
 
+        #region Métodos da DAL
         public bool Salvar()
         {
             try
@@ -106,7 +104,7 @@ namespace CapsuleCorpCoffee.DAL.Models
             }
         }
 
-        public static bool ExcluirCapsula(int id)
+        public static void ExcluirCapsula(int id)
         {
             try
             {
@@ -115,13 +113,12 @@ namespace CapsuleCorpCoffee.DAL.Models
                 TipoCapsulaDAL persistencia = new TipoCapsulaDAL();
 
                 persistencia.Deletar(capsula);
-
-                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception("Não foi possível carregar o tipo de cápsula. Erro: " + ex.Message);
             }
         }
+        #endregion
     }
 }

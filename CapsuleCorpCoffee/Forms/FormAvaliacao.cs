@@ -1,20 +1,16 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormAvaliacao : Form
     {
+        #region Propriedades, Variáveis e Atributos
         public Avaliacao Avaliacao;
+        #endregion
 
+        #region Construtores
         public FormAvaliacao(Receita receita)
         {
             InitializeComponent();
@@ -22,7 +18,9 @@ namespace CapsuleCorpCoffee.Forms
             Avaliacao.Receita = receita.ID;
             lblReceita.Text += receita.Descricao;
         }
+        #endregion
 
+        #region Eventos
         private void btnAvaliar_Click(object sender, EventArgs e)
         {
             int nota;
@@ -38,7 +36,9 @@ namespace CapsuleCorpCoffee.Forms
                 this.Close();
             }
         }
+        #endregion
 
+        #region Métodos
         private bool ValidarCampos()
         {
             if (Avaliacao.Nota < 1 || Avaliacao.Nota > 5)
@@ -55,5 +55,6 @@ namespace CapsuleCorpCoffee.Forms
 
             return true;
         }
+        #endregion
     }
 }

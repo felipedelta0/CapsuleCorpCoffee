@@ -1,6 +1,6 @@
 ﻿namespace CapsuleCorpCoffee.Forms
 {
-    partial class EditorTipoCapsulas
+    partial class FormEditorTipoCapsulas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorTipoCapsulas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditorTipoCapsulas));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -60,7 +60,7 @@
             this.txtDescricao.Location = new System.Drawing.Point(101, 22);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(144, 20);
-            this.txtDescricao.TabIndex = 2;
+            this.txtDescricao.TabIndex = 0;
             // 
             // cmbForca
             // 
@@ -79,7 +79,7 @@
             this.cmbForca.Location = new System.Drawing.Point(101, 54);
             this.cmbForca.Name = "cmbForca";
             this.cmbForca.Size = new System.Drawing.Size(77, 21);
-            this.cmbForca.TabIndex = 3;
+            this.cmbForca.TabIndex = 1;
             this.cmbForca.Text = "1";
             // 
             // btnSalvar
@@ -87,7 +87,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(53, 101);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -97,12 +97,12 @@
             this.btnCancelar.Location = new System.Drawing.Point(134, 101);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // EditorTipoCapsulas
+            // FormEditorTipoCapsulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,7 +116,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "EditorTipoCapsulas";
+            this.Name = "FormEditorTipoCapsulas";
             this.Text = "Editor de Tipo de Cápsulas";
             this.ResumeLayout(false);
             this.PerformLayout();

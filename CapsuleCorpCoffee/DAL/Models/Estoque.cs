@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapsuleCorpCoffee.DAL.Models
 {
     public class Estoque
     {
+        #region Propriedades
         public int ID { get; set; }
         public TipoCapsula Capsula { get; set; }
         public int Quantidade { get; set; }
@@ -23,7 +21,9 @@ namespace CapsuleCorpCoffee.DAL.Models
                 return false;
             }
         }
+        #endregion 
 
+        #region Construtores
         public Estoque()
         {
             ID = -1;
@@ -41,7 +41,9 @@ namespace CapsuleCorpCoffee.DAL.Models
         {
             PreencherDados(row);
         }
+        #endregion 
 
+        #region Métodos da Classe
         public void PreencherDados(DataRow row)
         {
             ID = Int32.Parse(row["ID"].ToString());
@@ -50,6 +52,36 @@ namespace CapsuleCorpCoffee.DAL.Models
             Capsula = TipoCapsula.CarregarCapsulaPorID(Int32.Parse(row["Capsula"].ToString()));
         }
 
+        public int AbaixaEstoque(int quantidade)
+        {
+            try
+            {
+                int faltante;
+                faltante = this.Quantidade - quantidade;
+
+                if (faltante < 0)
+                {
+                    this.Quantidade = 0;
+                }
+                else if (faltante >= 0)
+                {
+                    this.Quantidade -= quantidade;
+                    if (faltante >= 0)
+                        faltante = 0;
+                    else
+                        faltante = Math.Abs(faltante);
+                }
+                this.Salvar();
+                return faltante;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível reduzir a quantidade do estoque. Erro: " + ex.Message);
+            }
+        }
+        #endregion 
+
+        #region Métodos da DAL
         public bool Salvar()
         {
             try
@@ -131,33 +163,6 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível listar os registros cadastrados. Erro: " + ex.Message);
             }
         }
-
-        public int AbaixaEstoque(int quantidade)
-        {
-            try
-            {
-                int faltante;
-                faltante = this.Quantidade - quantidade;
-
-                if (faltante < 0)
-                {
-                    this.Quantidade = 0;
-                }
-                else if (faltante >= 0)
-                {
-                    this.Quantidade -= quantidade;
-                    if (faltante >= 0)
-                        faltante = 0;
-                    else
-                        faltante = Math.Abs(faltante);
-                }
-                this.Salvar();
-                return faltante;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Não foi possível reduzir a quantidade do estoque. Erro: " + ex.Message);
-            }
-        }
+        #endregion 
     }
 }

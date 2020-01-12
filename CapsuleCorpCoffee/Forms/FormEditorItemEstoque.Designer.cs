@@ -72,7 +72,7 @@
             this.cmbCapsula.Location = new System.Drawing.Point(163, 22);
             this.cmbCapsula.Name = "cmbCapsula";
             this.cmbCapsula.Size = new System.Drawing.Size(161, 21);
-            this.cmbCapsula.TabIndex = 1;
+            this.cmbCapsula.TabIndex = 0;
             // 
             // txtQuantidade
             // 
@@ -82,7 +82,7 @@
             this.txtQuantidade.Mask = "000";
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(39, 20);
-            this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.TabIndex = 2;
             this.txtQuantidade.ValidatingType = typeof(int);
             // 
             // datePicker
@@ -93,14 +93,14 @@
             this.datePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(100, 20);
-            this.datePicker.TabIndex = 2;
+            this.datePicker.TabIndex = 1;
             // 
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(106, 166);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -110,7 +110,7 @@
             this.btnSair.Location = new System.Drawing.Point(196, 166);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 5;
+            this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);

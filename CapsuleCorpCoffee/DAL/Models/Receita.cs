@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapsuleCorpCoffee.DAL.Models
 {
     public class Receita
     {
+        #region Propriedades
         public int ID { get; set; }
         public string Descricao { get; set; }
         public List<ReceitaItem> Items { get; set; }
@@ -43,7 +42,9 @@ namespace CapsuleCorpCoffee.DAL.Models
                 return Items.Sum(item => item.Quantidade);
             }
         }
+        #endregion 
 
+        #region Construtores
         public Receita()
         {
             ID = -1;
@@ -60,7 +61,9 @@ namespace CapsuleCorpCoffee.DAL.Models
         {
             PreencherDados(row);
         }
+        #endregion 
 
+        #region Métodos da Classe
         public void PreencherDados(DataRow row)
         {
             ID = Int32.Parse(row["ID"].ToString());
@@ -68,6 +71,27 @@ namespace CapsuleCorpCoffee.DAL.Models
             CarregarItems();
         }
 
+        public void AtualizarItens()
+        {
+            if (ID > 0)
+            {
+                foreach (ReceitaItem item in Items)
+                {
+                    item.Receita = ID;
+                }
+            }
+        }
+
+        private void CarregarItems()
+        {
+            if (ID > 0)
+            {
+                Items = ReceitaItem.ListarPorReceita(ID);
+            }
+        }
+        #endregion
+
+        #region Métodos da DAL
         public void Carregar(int id)
         {
             try
@@ -81,14 +105,6 @@ namespace CapsuleCorpCoffee.DAL.Models
             catch (Exception ex)
             {
                 throw new Exception("Não foi possível carregar a receita. Erro: " + ex.Message);
-            }
-        }
-
-        private void CarregarItems()
-        {
-            if (ID > 0)
-            {
-                Items = ReceitaItem.ListarPorReceita(ID);
             }
         }
 
@@ -161,16 +177,6 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível carregar a receita. Erro: " + ex.Message);
             }
         }
-
-        public void AtualizarItens()
-        {
-            if (ID > 0)
-            {
-                foreach (ReceitaItem item in Items)
-                {
-                    item.Receita = ID;
-                }
-            }
-        }
+        #endregion
     }
 }

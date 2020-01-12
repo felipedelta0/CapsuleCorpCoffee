@@ -1,9 +1,6 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 using System.Data;
 
@@ -11,7 +8,7 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
 {
     class EstoqueDAL : Conexao
     {
-        // CRUD
+        #region CREATE
         public void Inserir(Estoque itemEstoque)
         {
             try
@@ -32,6 +29,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
+
+        #region READ
         public Estoque SelecionarPorID(int id)
         {
             try
@@ -132,47 +132,6 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
-        
-        public void Atualizar(Estoque itemEstoque)
-        {
-            try
-            {
-                AbrirConexao();
-                Cmd = new NpgsqlCommand("UPDATE public.estoque SET \"Capsula\" = @capsula, \"Validade\" = @validade, \"Quantidade\" = @quantidade WHERE \"ID\" = @id", Conn);
-                Cmd.Parameters.AddWithValue("capsula", itemEstoque.Capsula.ID);
-                Cmd.Parameters.AddWithValue("validade", itemEstoque.Validade);
-                Cmd.Parameters.AddWithValue("quantidade", itemEstoque.Quantidade);
-                Cmd.Parameters.AddWithValue("id", itemEstoque.ID);
-                Cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro na atualização de item no estoque: " + ex.Message);
-            }
-            finally
-            {
-                FecharConexao();
-            }
-        }
-
-        public void Deletar(Estoque itemEstoque)
-        {
-            try
-            {
-                AbrirConexao();
-                Cmd = new NpgsqlCommand("DELETE FROM public.estoque WHERE \"ID\" = @id", Conn);
-                Cmd.Parameters.AddWithValue("id", itemEstoque.ID);
-                Cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro na exclusão de item do estoque: " + ex.Message);
-            }
-            finally
-            {
-                FecharConexao();
-            }
-        }
 
         public List<Estoque> ListarPorItemValidade(int capsula)
         {
@@ -211,5 +170,51 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
+
+        #region UPDATE
+        public void Atualizar(Estoque itemEstoque)
+        {
+            try
+            {
+                AbrirConexao();
+                Cmd = new NpgsqlCommand("UPDATE public.estoque SET \"Capsula\" = @capsula, \"Validade\" = @validade, \"Quantidade\" = @quantidade WHERE \"ID\" = @id", Conn);
+                Cmd.Parameters.AddWithValue("capsula", itemEstoque.Capsula.ID);
+                Cmd.Parameters.AddWithValue("validade", itemEstoque.Validade);
+                Cmd.Parameters.AddWithValue("quantidade", itemEstoque.Quantidade);
+                Cmd.Parameters.AddWithValue("id", itemEstoque.ID);
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na atualização de item no estoque: " + ex.Message);
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
+        #endregion
+
+        #region DELETE
+        public void Deletar(Estoque itemEstoque)
+        {
+            try
+            {
+                AbrirConexao();
+                Cmd = new NpgsqlCommand("DELETE FROM public.estoque WHERE \"ID\" = @id", Conn);
+                Cmd.Parameters.AddWithValue("id", itemEstoque.ID);
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro na exclusão de item do estoque: " + ex.Message);
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
+        #endregion
     }
 }

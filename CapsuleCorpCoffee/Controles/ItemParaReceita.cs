@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 using CapsuleCorpCoffee.DAL.Models;
 
 namespace CapsuleCorpCoffee.Controles
 {
     internal partial class ItemParaReceita : UserControl
     {
-        public ItemParaReceita()
-        {
-            InitializeComponent();
-        }
-
+        #region Propriedades, Váriaveis e Atributos
         public TipoCapsula CapsulaEscolhida
         {
             get
@@ -35,19 +25,39 @@ namespace CapsuleCorpCoffee.Controles
                 return quantidade;
             }
         }
+        #endregion
 
+        #region Construtores
+        public ItemParaReceita()
+        {
+            InitializeComponent();
+        }
+        #endregion
+
+        #region Eventos
         private void ItemParaReceita_Load(object sender, EventArgs e)
         {
-            List<TipoCapsula> capsulas = TipoCapsula.CarregarCapsulas();
+            MontarComboBox();
+        }
+        #endregion
 
+        #region Métodos
+        private void MontarComboBox()
+        {
             cmbCapsula.Items.Clear();
 
-            foreach (TipoCapsula capsula in capsulas)
-            {
-                cmbCapsula.Items.Add(capsula);
-            }
+            CarregarCapsulasNoCombo();
+
+            cmbCapsula.DisplayMember = "Descricao";
 
             cmbCapsula.SelectedIndex = 0;
         }
+
+        private void CarregarCapsulasNoCombo()
+        {
+            foreach (TipoCapsula capsula in TipoCapsula.CarregarCapsulas())
+                cmbCapsula.Items.Add(capsula);
+        }
+        #endregion
     }
 }

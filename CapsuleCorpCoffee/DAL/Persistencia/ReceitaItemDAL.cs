@@ -1,9 +1,6 @@
 ﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using Npgsql;
 
@@ -11,7 +8,7 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
 {
     public class ReceitaItemDAL : Conexao
     {
-        // CRUD
+        #region CREATE
         public void Inserir(ReceitaItem item)
         {
             try
@@ -32,7 +29,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region READ
         public ReceitaItem SelecionarPorID(int id)
         {
             try
@@ -170,7 +169,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region UPDATE
         public void Atualizar(ReceitaItem item)
         {
             try
@@ -192,7 +193,9 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
 
+        #region DELETE
         public void Deletar(ReceitaItem item)
         {
             try
@@ -211,5 +214,6 @@ namespace CapsuleCorpCoffee.DAL.Persistencia
                 FecharConexao();
             }
         }
+        #endregion
     }
 }

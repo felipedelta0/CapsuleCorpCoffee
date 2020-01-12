@@ -2,19 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapsuleCorpCoffee.DAL.Models
 {
     public class ReceitaItem
     {
+        #region Propriedades
         public int ID { get; set; }
         public int Receita { get; set; }
         public TipoCapsula Capsula { get; set; }
         public int Quantidade { get; set; }
+        #endregion
 
+        #region Construtores
         public ReceitaItem()
         {
             ID = -1;
@@ -32,7 +32,9 @@ namespace CapsuleCorpCoffee.DAL.Models
         {
             PreencherDados(row);
         }
+        #endregion
 
+        #region Métodos da Classe
         public void PreencherDados(DataRow row)
         {
             ID = Int32.Parse(row["ID"].ToString());
@@ -40,7 +42,9 @@ namespace CapsuleCorpCoffee.DAL.Models
             Capsula = TipoCapsula.CarregarCapsulaPorID(Int32.Parse(row["Capsula_ID"].ToString()));
             Quantidade = Int32.Parse(row["Quantidade"].ToString());
         }
+        #endregion
 
+        #region Métodos da DAL
         public void Carregar(int id)
         {
             try
@@ -110,6 +114,6 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível excluir esse item. Erro: " + ex.Message);
             }
         }
-
+        #endregion
     }
 }

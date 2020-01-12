@@ -1,6 +1,6 @@
 ﻿namespace CapsuleCorpCoffee.Forms
 {
-    partial class CadastrarReceita
+    partial class FormCadastrarReceita
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastrarReceita));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastrarReceita));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtNomeReceita = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnEscolher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbQuantidadeItens = new System.Windows.Forms.ComboBox();
+            this.txtNomeReceita = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.flowControles = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -53,22 +53,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(324, 52);
             this.panel1.TabIndex = 0;
-            // 
-            // txtNomeReceita
-            // 
-            this.txtNomeReceita.Location = new System.Drawing.Point(110, 5);
-            this.txtNomeReceita.Name = "txtNomeReceita";
-            this.txtNomeReceita.Size = new System.Drawing.Size(201, 20);
-            this.txtNomeReceita.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nome da Receita:";
             // 
             // btnEscolher
             // 
@@ -104,6 +88,22 @@
             this.cmbQuantidadeItens.Size = new System.Drawing.Size(121, 21);
             this.cmbQuantidadeItens.TabIndex = 0;
             // 
+            // txtNomeReceita
+            // 
+            this.txtNomeReceita.Location = new System.Drawing.Point(110, 5);
+            this.txtNomeReceita.Name = "txtNomeReceita";
+            this.txtNomeReceita.Size = new System.Drawing.Size(201, 20);
+            this.txtNomeReceita.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nome da Receita:";
+            // 
             // flowControles
             // 
             this.flowControles.AutoSize = true;
@@ -135,7 +135,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(3, 34);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterar.TabIndex = 2;
+            this.btnAlterar.TabIndex = 4;
             this.btnAlterar.Text = "Limpar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -145,7 +145,7 @@
             this.btnSair.Location = new System.Drawing.Point(246, 34);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
-            this.btnSair.TabIndex = 1;
+            this.btnSair.TabIndex = 5;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -156,12 +156,12 @@
             this.btnSalvar.Location = new System.Drawing.Point(127, 34);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 0;
+            this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // CadastrarReceita
+            // FormCadastrarReceita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,7 +177,7 @@
             this.MaximumSize = new System.Drawing.Size(340, 610);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(340, 39);
-            this.Name = "CadastrarReceita";
+            this.Name = "FormCadastrarReceita";
             this.Text = "Cadastrar Nova Receita";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

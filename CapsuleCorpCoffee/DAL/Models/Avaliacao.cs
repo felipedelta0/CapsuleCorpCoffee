@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapsuleCorpCoffee.DAL.Models
 {
     public class Avaliacao
     {
+        #region Propriedades
         public int ID { get; set; }
         public int Nota { get; set; }
         public int Receita { get; set; }
@@ -22,7 +21,9 @@ namespace CapsuleCorpCoffee.DAL.Models
                 return ID > 0 ? true : false;
             }
         }
+        #endregion
 
+        #region Construtores
         public Avaliacao()
         {
             ID = -1;
@@ -41,7 +42,9 @@ namespace CapsuleCorpCoffee.DAL.Models
         {
             PreencherDados(row);
         }
+        #endregion
 
+        #region Métodos da Classe
         public void PreencherDados(DataRow row)
         {
             ID = Int32.Parse(row["ID"].ToString());
@@ -51,6 +54,14 @@ namespace CapsuleCorpCoffee.DAL.Models
             Comentario = row["Comentario"].ToString();
         }
 
+        public static double ObterMedia(int receita)
+        {
+            List<double> notas = PegarItensPorReceita(receita);
+            return notas.Count > 0 ? (notas.Sum() / notas.Count) : -1;
+        }
+        #endregion
+
+        #region Métodos da DAL
         public void Carregar(int id)
         {
             try
@@ -88,5 +99,20 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível salvar a avaliação. Erro: " + ex.Message);
             }
         }
+
+        private static List<double> PegarItensPorReceita(int receita)
+        {
+            try
+            {
+                AvaliacaoDAL persistencia = new AvaliacaoDAL();
+
+                return persistencia.SelecionarPorReceitaID(receita).Select(aval => (double)aval.Nota).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Não foi possível obter a avaliação. Erro: " + ex.Message);
+            }
+        }
+        #endregion
     }
 }
