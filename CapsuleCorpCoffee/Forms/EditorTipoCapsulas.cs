@@ -1,4 +1,4 @@
-﻿using CapsuleCorpCoffee.DAL_MUDAR.Models;
+﻿using CapsuleCorpCoffee.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +16,14 @@ namespace CapsuleCorpCoffee.Forms
         private string Descricao;
         private int Forca;
         private TipoCapsula Capsula;
+        private bool IsEditar;
 
         public EditorTipoCapsulas()
         {
             InitializeComponent();
 
             this.Text = "Novo Tipo de Cápsula";
+            IsEditar = false;
         }
 
         // Construtor de Edição
@@ -31,6 +33,7 @@ namespace CapsuleCorpCoffee.Forms
             Capsula = tipoCapsula;
             txtDescricao.Text = Capsula.Descricao;
             cmbForca.Text = Capsula.Forca.ToString();
+            IsEditar = true;
 
             this.Text = "Edição de Tipo de Cápsula";
         }
@@ -38,11 +41,20 @@ namespace CapsuleCorpCoffee.Forms
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Descricao = txtDescricao.Text.Trim();
-            Int32.TryParse(cmbForca.SelectedItem.ToString(), out Forca);
+            Int32.TryParse(cmbForca.Text.ToString(), out Forca);
 
             if (ValidarCampos())
             {
-                // Salvar tudo certinho
+                if (!IsEditar)
+                    Capsula = new TipoCapsula();
+
+                Capsula.Descricao = Descricao;
+                Capsula.Forca = Forca;
+                if (Capsula.Salvar())
+                    MessageBox.Show("Registro salvo com sucesso!", "Sucesso");
+
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
 

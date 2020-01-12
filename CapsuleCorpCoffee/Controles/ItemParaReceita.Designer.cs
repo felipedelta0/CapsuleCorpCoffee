@@ -82,6 +82,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ItemParaReceita";
             this.Size = new System.Drawing.Size(314, 26);
+            this.Load += new System.EventHandler(this.ItemParaReceita_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

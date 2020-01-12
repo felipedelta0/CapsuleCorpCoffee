@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapsuleCorpCoffee.DAL_MUDAR.Models;
+using CapsuleCorpCoffee.DAL.Models;
 
 namespace CapsuleCorpCoffee.Controles
 {
@@ -34,6 +34,20 @@ namespace CapsuleCorpCoffee.Controles
                 Int32.TryParse(txtQuantidade.Text, out quantidade);
                 return quantidade;
             }
+        }
+
+        private void ItemParaReceita_Load(object sender, EventArgs e)
+        {
+            List<TipoCapsula> capsulas = TipoCapsula.CarregarCapsulas();
+
+            cmbCapsula.Items.Clear();
+
+            foreach (TipoCapsula capsula in capsulas)
+            {
+                cmbCapsula.Items.Add(capsula);
+            }
+
+            cmbCapsula.SelectedIndex = 0;
         }
     }
 }

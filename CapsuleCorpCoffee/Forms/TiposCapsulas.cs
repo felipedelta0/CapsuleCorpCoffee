@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapsuleCorpCoffee.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,15 +25,68 @@ namespace CapsuleCorpCoffee.Forms
 
         private void TiposCapsulas_Load(object sender, EventArgs e)
         {
-            // Popular Grid View
+            AtualizarView();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            // Criar novo tipo de capsula
             EditorTipoCapsulas formEditor = new EditorTipoCapsulas();
-            formEditor.ShowDialog();
-            this.Close();
+
+            DialogResult res = formEditor.ShowDialog();
+
+            AtualizarView();
+        }
+
+        private void AtualizarView()
+        {
+            int index = PegarIndexDeSelecao();
+
+            List<TipoCapsula> capsulas = new List<TipoCapsula>();
+            capsulas = TipoCapsula.CarregarCapsulas();
+
+            dgvTipoCapsulas.DataSource = capsulas;
+            dgvTipoCapsulas.Rows[index].Selected = true;
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            int capsulaID = PegarIDCapsula();
+
+            if (capsulaID > 0)
+            {
+                EditorTipoCapsulas formEditor = new EditorTipoCapsulas(TipoCapsula.CarregarCapsulaPorID(capsulaID));
+
+                DialogResult res = formEditor.ShowDialog();
+
+                AtualizarView();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            int capsulaID = PegarIDCapsula();
+
+            if (capsulaID > 0)
+            {
+                bool exclusao = TipoCapsula.ExcluirCapsula(capsulaID);
+
+                if (exclusao)
+                    MessageBox.Show("Tipo de Cápsula excluída com sucesso!");
+
+                AtualizarView();
+            }
+        }
+
+        private int PegarIDCapsula()
+        {
+            int capsulaID;
+            Int32.TryParse(dgvTipoCapsulas.SelectedRows[0].Cells[0].Value.ToString(), out capsulaID);
+            return capsulaID;
+        }
+
+        private int PegarIndexDeSelecao()
+        {
+            return dgvTipoCapsulas.SelectedRows.Count > 0 ? (dgvTipoCapsulas.SelectedRows[0].Index > 0 ? dgvTipoCapsulas.SelectedRows[0].Index  - 1 : 0) : 0;
         }
     }
 }

@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapsuleCorpCoffee.DAL.Models;
+using CapsuleCorpCoffee.DAL.Persistencia;
 using CapsuleCorpCoffee.Forms;
-using Npgsql;
+
 
 namespace CapsuleCorpCoffee
 {
@@ -19,49 +21,55 @@ namespace CapsuleCorpCoffee
             InitializeComponent();
         }
 
-        private void btnConexao_Click(object sender, EventArgs e)
-        {
-            var connString = "Host=localhost;Username=postgres;Password=postgres;Database=capsulecorpcoffeeDB";
-
-            try
-            {
-                var conn = new NpgsqlConnection(connString);
-
-                conn.Open();
-
-                MessageBox.Show(conn.State.ToString(), "Status da Conexão");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro");
-            }
-            
-        }
-
         // Gerenciar os Tipos de Cápsulas de Café
         private void tiposDeCapsulasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TiposCapsulas formTipoCapsulas = new TiposCapsulas();
-            formTipoCapsulas.ShowDialog();
-        }
-
-        // Fazer uma receita já existente
-        private void fazerReceitaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            AbrirTiposCapsulas();
         }
 
         // Cadastrar Nova Receita
         private void cadastrarReceitaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CadastrarReceita formCadastrarReceira = new CadastrarReceita();
-            formCadastrarReceira.ShowDialog();
+            AbrirReceitas();
         }
 
         // Gerenciar o Estoque
         private void gerenciarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AbrirEstoque();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirTiposCapsulas();
+        }
+
+        private void AbrirTiposCapsulas()
+        {
+            TiposCapsulas formTipoCapsulas = new TiposCapsulas();
+            formTipoCapsulas.ShowDialog();
+        }
+
+        private void AbrirReceitas()
+        {
+            FormReceitas formReceitas = new FormReceitas();
+            formReceitas.ShowDialog();
+        }
+
+        private void AbrirEstoque()
+        {
+            FormEstoque formEstoque = new FormEstoque();
+            formEstoque.ShowDialog();
+        }
+
+        private void btnReceitas_Click(object sender, EventArgs e)
+        {
+            AbrirReceitas();
+        }
+
+        private void btnEstoque_Click(object sender, EventArgs e)
+        {
+            AbrirEstoque();
         }
     }
 }

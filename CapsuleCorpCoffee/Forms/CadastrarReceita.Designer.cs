@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastrarReceita));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNomeReceita = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnEscolher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbQuantidadeItens = new System.Windows.Forms.ComboBox();
@@ -49,13 +51,29 @@
             this.panel1.Controls.Add(this.cmbQuantidadeItens);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 57);
+            this.panel1.Size = new System.Drawing.Size(324, 52);
             this.panel1.TabIndex = 0;
+            // 
+            // txtNomeReceita
+            // 
+            this.txtNomeReceita.Location = new System.Drawing.Point(110, 5);
+            this.txtNomeReceita.Name = "txtNomeReceita";
+            this.txtNomeReceita.Size = new System.Drawing.Size(201, 20);
+            this.txtNomeReceita.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nome da Receita:";
             // 
             // btnEscolher
             // 
             this.btnEscolher.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnEscolher.Location = new System.Drawing.Point(185, 28);
+            this.btnEscolher.Location = new System.Drawing.Point(191, 26);
             this.btnEscolher.Name = "btnEscolher";
             this.btnEscolher.Size = new System.Drawing.Size(75, 21);
             this.btnEscolher.TabIndex = 1;
@@ -66,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 7);
+            this.label1.Location = new System.Drawing.Point(27, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(285, 13);
             this.label1.TabIndex = 1;
@@ -81,7 +99,7 @@
             "3",
             "4",
             "5"});
-            this.cmbQuantidadeItens.Location = new System.Drawing.Point(58, 28);
+            this.cmbQuantidadeItens.Location = new System.Drawing.Point(64, 26);
             this.cmbQuantidadeItens.Name = "cmbQuantidadeItens";
             this.cmbQuantidadeItens.Size = new System.Drawing.Size(121, 21);
             this.cmbQuantidadeItens.TabIndex = 0;
@@ -92,7 +110,7 @@
             this.flowControles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowControles.BackColor = System.Drawing.SystemColors.Control;
             this.flowControles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowControles.Location = new System.Drawing.Point(3, 63);
+            this.flowControles.Location = new System.Drawing.Point(3, 59);
             this.flowControles.Name = "flowControles";
             this.flowControles.Size = new System.Drawing.Size(0, 0);
             this.flowControles.TabIndex = 1;
@@ -101,18 +119,20 @@
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.Controls.Add(this.txtNomeReceita);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnAlterar);
             this.panel2.Controls.Add(this.btnSair);
             this.panel2.Controls.Add(this.btnSalvar);
-            this.panel2.Location = new System.Drawing.Point(1, 233);
+            this.panel2.Location = new System.Drawing.Point(1, 313);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(323, 30);
+            this.panel2.Size = new System.Drawing.Size(323, 64);
             this.panel2.TabIndex = 2;
             // 
             // btnAlterar
             // 
             this.btnAlterar.Enabled = false;
-            this.btnAlterar.Location = new System.Drawing.Point(3, 4);
+            this.btnAlterar.Location = new System.Drawing.Point(3, 34);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 2;
@@ -122,7 +142,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(246, 4);
+            this.btnSair.Location = new System.Drawing.Point(246, 34);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 1;
@@ -133,7 +153,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(127, 4);
+            this.btnSalvar.Location = new System.Drawing.Point(127, 34);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 0;
@@ -147,7 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(324, 264);
+            this.ClientSize = new System.Drawing.Size(324, 378);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.flowControles);
             this.Controls.Add(this.panel1);
@@ -162,6 +182,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +199,7 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtNomeReceita;
+        private System.Windows.Forms.Label label2;
     }
 }

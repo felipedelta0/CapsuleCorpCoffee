@@ -29,25 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TiposCapsulas));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTipoCapsulas = new System.Windows.Forms.DataGridView();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoCapsulas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvTipoCapsulas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(347, 241);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvTipoCapsulas.AllowUserToAddRows = false;
+            this.dgvTipoCapsulas.AllowUserToDeleteRows = false;
+            this.dgvTipoCapsulas.AllowUserToOrderColumns = true;
+            this.dgvTipoCapsulas.AllowUserToResizeRows = false;
+            this.dgvTipoCapsulas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTipoCapsulas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTipoCapsulas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvTipoCapsulas.Location = new System.Drawing.Point(12, 12);
+            this.dgvTipoCapsulas.MultiSelect = false;
+            this.dgvTipoCapsulas.Name = "dgvTipoCapsulas";
+            this.dgvTipoCapsulas.ReadOnly = true;
+            this.dgvTipoCapsulas.RowHeadersVisible = false;
+            this.dgvTipoCapsulas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvTipoCapsulas.RowTemplate.ReadOnly = true;
+            this.dgvTipoCapsulas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTipoCapsulas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvTipoCapsulas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTipoCapsulas.ShowCellErrors = false;
+            this.dgvTipoCapsulas.ShowCellToolTips = false;
+            this.dgvTipoCapsulas.ShowEditingIcon = false;
+            this.dgvTipoCapsulas.ShowRowErrors = false;
+            this.dgvTipoCapsulas.Size = new System.Drawing.Size(430, 241);
+            this.dgvTipoCapsulas.TabIndex = 0;
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(365, 12);
+            this.btnNovo.Location = new System.Drawing.Point(448, 12);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 1;
@@ -57,25 +75,27 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(365, 41);
+            this.btnAlterar.Location = new System.Drawing.Point(448, 41);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 2;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(365, 70);
+            this.btnExcluir.Location = new System.Drawing.Point(448, 70);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(365, 230);
+            this.btnSair.Location = new System.Drawing.Point(448, 230);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 4;
@@ -87,12 +107,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 264);
+            this.ClientSize = new System.Drawing.Size(535, 264);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvTipoCapsulas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -100,14 +120,14 @@
             this.Name = "TiposCapsulas";
             this.Text = "Tipos de Cápsulas";
             this.Load += new System.EventHandler(this.TiposCapsulas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoCapsulas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTipoCapsulas;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
