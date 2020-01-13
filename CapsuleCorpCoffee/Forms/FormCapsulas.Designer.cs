@@ -1,6 +1,6 @@
 ﻿namespace CapsuleCorpCoffee.Forms
 {
-    partial class FormTiposCapsulas
+    partial class FormCapsulas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,46 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTiposCapsulas));
-            this.dgvTipoCapsulas = new System.Windows.Forms.DataGridView();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCapsulas));
+            this.dgvCapsulas = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colForça = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoCapsulas)).BeginInit();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapsulas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvTipoCapsulas
+            // dgvCapsulas
             // 
-            this.dgvTipoCapsulas.AllowUserToAddRows = false;
-            this.dgvTipoCapsulas.AllowUserToDeleteRows = false;
-            this.dgvTipoCapsulas.AllowUserToOrderColumns = true;
-            this.dgvTipoCapsulas.AllowUserToResizeRows = false;
-            this.dgvTipoCapsulas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTipoCapsulas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTipoCapsulas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCapsulas.AllowUserToAddRows = false;
+            this.dgvCapsulas.AllowUserToDeleteRows = false;
+            this.dgvCapsulas.AllowUserToOrderColumns = true;
+            this.dgvCapsulas.AllowUserToResizeRows = false;
+            this.dgvCapsulas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCapsulas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCapsulas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
             this.colDescricao,
             this.colForça});
-            this.dgvTipoCapsulas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvTipoCapsulas.Location = new System.Drawing.Point(12, 12);
-            this.dgvTipoCapsulas.MultiSelect = false;
-            this.dgvTipoCapsulas.Name = "dgvTipoCapsulas";
-            this.dgvTipoCapsulas.ReadOnly = true;
-            this.dgvTipoCapsulas.RowHeadersVisible = false;
-            this.dgvTipoCapsulas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvTipoCapsulas.RowTemplate.ReadOnly = true;
-            this.dgvTipoCapsulas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTipoCapsulas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvTipoCapsulas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTipoCapsulas.ShowCellErrors = false;
-            this.dgvTipoCapsulas.ShowCellToolTips = false;
-            this.dgvTipoCapsulas.ShowEditingIcon = false;
-            this.dgvTipoCapsulas.ShowRowErrors = false;
-            this.dgvTipoCapsulas.Size = new System.Drawing.Size(430, 241);
-            this.dgvTipoCapsulas.TabIndex = 0;
+            this.dgvCapsulas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvCapsulas.Location = new System.Drawing.Point(12, 12);
+            this.dgvCapsulas.MultiSelect = false;
+            this.dgvCapsulas.Name = "dgvCapsulas";
+            this.dgvCapsulas.ReadOnly = true;
+            this.dgvCapsulas.RowHeadersVisible = false;
+            this.dgvCapsulas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvCapsulas.RowTemplate.ReadOnly = true;
+            this.dgvCapsulas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCapsulas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvCapsulas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCapsulas.ShowCellErrors = false;
+            this.dgvCapsulas.ShowCellToolTips = false;
+            this.dgvCapsulas.ShowEditingIcon = false;
+            this.dgvCapsulas.ShowRowErrors = false;
+            this.dgvCapsulas.Size = new System.Drawing.Size(430, 241);
+            this.dgvCapsulas.TabIndex = 0;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.HeaderText = "Cápsula";
+            this.colDescricao.Name = "colDescricao";
+            this.colDescricao.ReadOnly = true;
+            // 
+            // colForça
+            // 
+            this.colForça.HeaderText = "Força Da Bebida";
+            this.colForça.Name = "colForça";
+            this.colForça.ReadOnly = true;
             // 
             // btnNovo
             // 
@@ -99,25 +117,7 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            // 
-            // colDescricao
-            // 
-            this.colDescricao.HeaderText = "Cápsula";
-            this.colDescricao.Name = "colDescricao";
-            this.colDescricao.ReadOnly = true;
-            // 
-            // colForça
-            // 
-            this.colForça.HeaderText = "Força Da Bebida";
-            this.colForça.Name = "colForça";
-            this.colForça.ReadOnly = true;
-            // 
-            // FormTiposCapsulas
+            // FormCapsulas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,22 +125,22 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.dgvTipoCapsulas);
+            this.Controls.Add(this.dgvCapsulas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormTiposCapsulas";
-            this.Text = "Tipos de Cápsulas";
-            this.Load += new System.EventHandler(this.TiposCapsulas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTipoCapsulas)).EndInit();
+            this.Name = "FormCapsulas";
+            this.Text = "Cápsulas";
+            this.Load += new System.EventHandler(this.FormCapsulas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapsulas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvTipoCapsulas;
+        private System.Windows.Forms.DataGridView dgvCapsulas;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnSair;

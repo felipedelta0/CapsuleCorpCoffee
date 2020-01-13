@@ -46,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camadas\Business\CapsulaBUS.cs" />
+    <Compile Include="Camadas\Business\EstoqueBUS.cs" />
+    <Compile Include="Camadas\DAO\CapsulaDAO.cs" />
+    <Compile Include="Camadas\DAO\EstoqueDAO.cs" />
+    <Compile Include="Camadas\DBConexao.cs" />
+    <Compile Include="Camadas\DTO\Capsula.cs" />
+    <Compile Include="Camadas\DTO\Estoque.cs" />
+    <Compile Include="Camadas\FactoryDAO.cs" />
+    <Compile Include="Camadas\FactoryBUS.cs" />
+    <Compile Include="Camadas\Interfaces\IBusinessLayer.cs" />
+    <Compile Include="Camadas\Interfaces\IDataAccessObject.cs" />
     <Compile Include="Controles\ItemParaReceita.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -55,7 +66,7 @@
     <Compile Include="DAL\Models\Avaliacao.cs" />
     <Compile Include="DAL\Models\ReceitaItem.cs" />
     <Compile Include="DAL\Models\TipoCapsula.cs" />
-    <Compile Include="DAL\Models\Estoque.cs" />
+    <Compile Include="DAL\Models\_Estoque.cs" />
     <Compile Include="DAL\Models\Receita.cs" />
     <Compile Include="DAL\Persistencia\AvaliacaoDAL.cs" />
     <Compile Include="DAL\Persistencia\Conexao.cs" />
@@ -69,11 +80,11 @@
     <Compile Include="Forms\FormCadastrarReceita.Designer.cs">
       <DependentUpon>FormCadastrarReceita.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormEditorTipoCapsulas.cs">
+    <Compile Include="Forms\FormEditorCapsulas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormEditorTipoCapsulas.Designer.cs">
-      <DependentUpon>FormEditorTipoCapsulas.cs</DependentUpon>
+    <Compile Include="Forms\FormEditorCapsulas.Designer.cs">
+      <DependentUpon>FormEditorCapsulas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormAvaliacao.cs">
       <SubType>Form</SubType>
@@ -81,11 +92,11 @@
     <Compile Include="Forms\FormAvaliacao.Designer.cs">
       <DependentUpon>FormAvaliacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormEditorItemEstoque.cs">
+    <Compile Include="Forms\FormEditorEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormEditorItemEstoque.Designer.cs">
-      <DependentUpon>FormEditorItemEstoque.cs</DependentUpon>
+    <Compile Include="Forms\FormEditorEstoque.Designer.cs">
+      <DependentUpon>FormEditorEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormFazerReceita.cs">
       <SubType>Form</SubType>
@@ -111,11 +122,11 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormTiposCapsulas.cs">
+    <Compile Include="Forms\FormCapsulas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormTiposCapsulas.Designer.cs">
-      <DependentUpon>FormTiposCapsulas.cs</DependentUpon>
+    <Compile Include="Forms\FormCapsulas.Designer.cs">
+      <DependentUpon>FormCapsulas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,14 +136,14 @@
     <EmbeddedResource Include="Forms\FormCadastrarReceita.resx">
       <DependentUpon>FormCadastrarReceita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormEditorTipoCapsulas.resx">
-      <DependentUpon>FormEditorTipoCapsulas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormEditorCapsulas.resx">
+      <DependentUpon>FormEditorCapsulas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAvaliacao.resx">
       <DependentUpon>FormAvaliacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormEditorItemEstoque.resx">
-      <DependentUpon>FormEditorItemEstoque.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormEditorEstoque.resx">
+      <DependentUpon>FormEditorEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFazerReceita.resx">
       <DependentUpon>FormFazerReceita.cs</DependentUpon>
@@ -146,8 +157,8 @@
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTiposCapsulas.resx">
-      <DependentUpon>FormTiposCapsulas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormCapsulas.resx">
+      <DependentUpon>FormCapsulas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

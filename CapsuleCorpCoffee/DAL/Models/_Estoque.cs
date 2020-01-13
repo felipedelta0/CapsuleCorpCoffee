@@ -52,6 +52,8 @@ namespace CapsuleCorpCoffee.DAL.Models
             Capsula = TipoCapsula.CarregarCapsulaPorID(Int32.Parse(row["Capsula"].ToString()));
         }
 
+
+        // --------------------------------------------------------------------------- //
         public int AbaixaEstoque(int quantidade)
         {
             try
@@ -79,6 +81,8 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível reduzir a quantidade do estoque. Erro: " + ex.Message);
             }
         }
+        // --------------------------------------------------------------------------- //
+
         #endregion 
 
         #region Métodos da DAL
@@ -150,6 +154,7 @@ namespace CapsuleCorpCoffee.DAL.Models
             }
         }
 
+        // --------------------------------------------------------------------------- //
         public static List<Estoque> PegarEstoquePorItemQuantidade(ReceitaItem item)
         {
             try
@@ -163,6 +168,9 @@ namespace CapsuleCorpCoffee.DAL.Models
                 throw new Exception("Não foi possível listar os registros cadastrados. Erro: " + ex.Message);
             }
         }
+        // --------------------------------------------------------------------------- //
+
+
         #endregion 
     }
 }

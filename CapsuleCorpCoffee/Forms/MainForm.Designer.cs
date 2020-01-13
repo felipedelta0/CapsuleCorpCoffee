@@ -34,6 +34,7 @@
             this.btnTiposCapsulas = new System.Windows.Forms.Button();
             this.btnReceitas = new System.Windows.Forms.Button();
             this.btnEstoque = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -48,14 +49,14 @@
             this.btnTiposCapsulas.Name = "btnTiposCapsulas";
             this.btnTiposCapsulas.Size = new System.Drawing.Size(365, 97);
             this.btnTiposCapsulas.TabIndex = 0;
-            this.btnTiposCapsulas.Text = "Tipos de Cápsulas";
+            this.btnTiposCapsulas.Text = "Cápsulas";
             this.btnTiposCapsulas.UseVisualStyleBackColor = true;
             this.btnTiposCapsulas.Click += new System.EventHandler(this.btnTiposCapsulas_Click);
             // 
             // btnReceitas
             // 
             this.btnReceitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceitas.Location = new System.Drawing.Point(12, 114);
+            this.btnReceitas.Location = new System.Drawing.Point(13, 208);
             this.btnReceitas.Name = "btnReceitas";
             this.btnReceitas.Size = new System.Drawing.Size(365, 97);
             this.btnReceitas.TabIndex = 1;
@@ -66,7 +67,7 @@
             // btnEstoque
             // 
             this.btnEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoque.Location = new System.Drawing.Point(12, 217);
+            this.btnEstoque.Location = new System.Drawing.Point(12, 382);
             this.btnEstoque.Name = "btnEstoque";
             this.btnEstoque.Size = new System.Drawing.Size(365, 97);
             this.btnEstoque.TabIndex = 2;
@@ -74,11 +75,22 @@
             this.btnEstoque.UseVisualStyleBackColor = true;
             this.btnEstoque.Click += new System.EventHandler(this.btnEstoque_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(53, 515);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(223, 110);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 326);
+            this.ClientSize = new System.Drawing.Size(390, 637);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEstoque);
             this.Controls.Add(this.btnReceitas);
             this.Controls.Add(this.btnTiposCapsulas);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.Button btnTiposCapsulas;
         private System.Windows.Forms.Button btnReceitas;
         private System.Windows.Forms.Button btnEstoque;
+        private System.Windows.Forms.Button button1;
     }
 }
 

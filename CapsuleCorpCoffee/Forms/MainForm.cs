@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas.DTO;
 using CapsuleCorpCoffee.Forms;
 
 namespace CapsuleCorpCoffee
@@ -16,7 +18,7 @@ namespace CapsuleCorpCoffee
         #region Eventos
         private void btnTiposCapsulas_Click(object sender, EventArgs e)
         {
-            AbrirTiposCapsulas();
+            AbrirFormCapsulas();
         }
 
         private void btnReceitas_Click(object sender, EventArgs e)
@@ -31,9 +33,9 @@ namespace CapsuleCorpCoffee
         #endregion
 
         #region Métodos
-        private void AbrirTiposCapsulas()
+        private void AbrirFormCapsulas()
         {
-            FormTiposCapsulas formTipoCapsulas = new FormTiposCapsulas();
+            FormCapsulas formTipoCapsulas = new FormCapsulas();
             formTipoCapsulas.ShowDialog();
         }
 
@@ -49,5 +51,13 @@ namespace CapsuleCorpCoffee
             formEstoque.ShowDialog();
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            CapsulaBUS caps = new CapsulaBUS();
+            Capsula cap = caps.SelecionarPorID(1);
+
+        }
     }
 }

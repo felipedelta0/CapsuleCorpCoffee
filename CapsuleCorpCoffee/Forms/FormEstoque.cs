@@ -1,4 +1,6 @@
-﻿using CapsuleCorpCoffee.DAL.Models;
+﻿using CapsuleCorpCoffee.Camadas;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas.DTO;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,10 +9,20 @@ namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormEstoque : Form
     {
+        #region Propriedades, Variáveis e Atributos
+
+        private EstoqueBUS estoqueBUS;
+        private CapsulaBUS capsulaBUS;
+
+        #endregion
+
         #region Construtores
         public FormEstoque()
         {
             InitializeComponent();
+
+            estoqueBUS = FactoryBUS.CreateEstoqueBUS();
+            capsulaBUS = FactoryBUS.CreateCapsulaBUS();
         }
         #endregion
 
@@ -22,13 +34,13 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            int itemID = PegarItemID();
+            int estoqueID = PegarItemID();
 
-            if (itemID > 0)
+            if (estoqueID > 0)
             {
-                FormEditorItemEstoque formEditor = new FormEditorItemEstoque(new Estoque(itemID));
+                Estoque estoque = estoqueBUS.SelecionarPorID(estoqueID);
 
-                DialogResult res = formEditor.ShowDialog();
+                AbrirFormEditor(estoque);
 
                 AtualizarView();
             }
@@ -36,9 +48,7 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            FormEditorItemEstoque formEditor = new FormEditorItemEstoque();
-
-            DialogResult res = formEditor.ShowDialog();
+            AbrirFormEditor();
 
             AtualizarView();
         }
@@ -49,16 +59,16 @@ namespace CapsuleCorpCoffee.Forms
 
             if (itemID > 0)
             {
-                Estoque item = new Estoque(itemID);
+                Estoque item = estoqueBUS.SelecionarPorID(itemID);
 
                 if (MessageBox.Show($"Tem certeza que deseja apagar todos os {item.Quantidade.ToString()} itens dessa cápsula do estoque?", "Tem certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    string capsula = item.Capsula.Descricao;
+                    Capsula capsula = capsulaBUS.SelecionarPorID(item.Capsula);
 
-                    bool exclusao = item.Excluir();
+                    bool exclusao = estoqueBUS.Excluir(item);
 
                     if (exclusao)
-                        MessageBox.Show($"Estoque {item.Capsula.Descricao} de excluída com sucesso!");
+                        MessageBox.Show($"Estoque de {capsula.Descricao} foi excluído com sucesso!");
 
                     AtualizarView();
                 }
@@ -76,15 +86,29 @@ namespace CapsuleCorpCoffee.Forms
         #endregion
 
         #region Métodos
+
+        private void AbrirFormEditor(Estoque estoque = null)
+        {
+            FormEditorEstoque formEditor;
+
+            if (estoque == null)
+                formEditor = new FormEditorEstoque();
+            else
+                formEditor = new FormEditorEstoque(estoque);
+
+            formEditor.ShowDialog();
+        }
+
         private void AtualizarView()
         {
             int index = PegarIndexDeSelecao();
 
-            List<Estoque> estoque = new List<Estoque>();
-            estoque = Estoque.ListarEstoque();
+            List<Estoque> estoque = estoqueBUS.Listar();
 
             MontarView(estoque);
-            dgvEstoque.Rows[index].Selected = true;
+
+            if (estoque.Count > 0)
+                dgvEstoque.Rows[index].Selected = true;
         }
 
         private int PegarIndexDeSelecao()
@@ -98,7 +122,9 @@ namespace CapsuleCorpCoffee.Forms
 
             foreach (Estoque item in estoque)
             {
-                dgvEstoque.Rows.Add(item.ID, item.Capsula.Descricao, item.Validade.ToString("dd/MM/yyyy"), item.Quantidade);
+                Capsula capsula = capsulaBUS.SelecionarPorID(item.Capsula);
+
+                dgvEstoque.Rows.Add(item.ID, capsula.Descricao, item.Validade.ToString("dd/MM/yyyy"), item.Quantidade);
             }
         }
 

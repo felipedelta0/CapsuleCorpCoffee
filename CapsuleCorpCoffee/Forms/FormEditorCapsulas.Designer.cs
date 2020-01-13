@@ -1,6 +1,6 @@
 ﻿namespace CapsuleCorpCoffee.Forms
 {
-    partial class FormEditorTipoCapsulas
+    partial class FormEditorCapsulas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditorTipoCapsulas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditorCapsulas));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
