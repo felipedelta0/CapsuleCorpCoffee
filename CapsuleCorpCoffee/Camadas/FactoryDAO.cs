@@ -28,5 +28,10 @@ namespace CapsuleCorpCoffee.Camadas
         {
             return new CapsulaReceitaDAO();
         }
+
+        public static AvaliacaoDAO CreateAvaliacaoDAO()
+        {
+            return new AvaliacaoDAO();
+        }
     }
 }

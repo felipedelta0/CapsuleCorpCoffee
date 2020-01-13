@@ -46,17 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camadas\Business\AvaliacaoBUS.cs" />
     <Compile Include="Camadas\Business\CapsulaBUS.cs" />
     <Compile Include="Camadas\Business\CapsulaReceitaBUS.cs" />
     <Compile Include="Camadas\Business\EstoqueBUS.cs" />
     <Compile Include="Camadas\Business\ReceitaBUS.cs" />
     <Compile Include="Camadas\DAO\CapsulaDAO.cs" />
     <Compile Include="Camadas\DAO\CapsulaReceitaDAO.cs" />
+    <Compile Include="Camadas\DAO\AvaliacaoDAO.cs" />
     <Compile Include="Camadas\DAO\EstoqueDAO.cs" />
     <Compile Include="Camadas\DAO\ReceitaDAO.cs" />
     <Compile Include="Camadas\DBConexao.cs" />
     <Compile Include="Camadas\DTO\Capsula.cs" />
     <Compile Include="Camadas\DTO\CapsulaReceita.cs" />
+    <Compile Include="Camadas\DTO\Avaliacao.cs" />
     <Compile Include="Camadas\DTO\Estoque.cs" />
     <Compile Include="Camadas\DTO\Receita.cs" />
     <Compile Include="Camadas\FactoryDAO.cs" />
@@ -69,17 +72,17 @@
     <Compile Include="Controles\ItemParaReceita.Designer.cs">
       <DependentUpon>ItemParaReceita.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Models\Avaliacao.cs" />
-    <Compile Include="DAL\Models\ReceitaItem.cs" />
-    <Compile Include="DAL\Models\TipoCapsula.cs" />
-    <Compile Include="DAL\Models\_Estoque.cs" />
-    <Compile Include="DAL\Models\Receita.cs" />
-    <Compile Include="DAL\Persistencia\AvaliacaoDAL.cs" />
-    <Compile Include="DAL\Persistencia\Conexao.cs" />
-    <Compile Include="DAL\Persistencia\EstoqueDAL.cs" />
-    <Compile Include="DAL\Persistencia\ReceitaDAL.cs" />
-    <Compile Include="DAL\Persistencia\ReceitaItemDAL.cs" />
-    <Compile Include="DAL\Persistencia\TipoCapsulaDAL.cs" />
+    <Compile Include="DAL\__Models\Avaliacao.cs" />
+    <Compile Include="DAL\__Models\ReceitaItem.cs" />
+    <Compile Include="DAL\__Models\TipoCapsula.cs" />
+    <Compile Include="DAL\__Models\_Estoque.cs" />
+    <Compile Include="DAL\__Models\Receita.cs" />
+    <Compile Include="DAL\__Persistencia\AvaliacaoDAL.cs" />
+    <Compile Include="DAL\__Persistencia\Conexao.cs" />
+    <Compile Include="DAL\__Persistencia\EstoqueDAL.cs" />
+    <Compile Include="DAL\__Persistencia\ReceitaDAL.cs" />
+    <Compile Include="DAL\__Persistencia\ReceitaItemDAL.cs" />
+    <Compile Include="DAL\__Persistencia\TipoCapsulaDAL.cs" />
     <Compile Include="Forms\FormEditorReceita.cs">
       <SubType>Form</SubType>
     </Compile>

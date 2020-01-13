@@ -27,5 +27,10 @@ namespace CapsuleCorpCoffee.Camadas
         {
             return new CapsulaReceitaBUS();
         }
+
+        public static AvaliacaoBUS CreateAvaliacaoBUS()
+        {
+            return new AvaliacaoBUS();
+        }
     }
 }

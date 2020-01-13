@@ -1,4 +1,6 @@
-﻿using CapsuleCorpCoffee.DAL.Models;
+﻿using CapsuleCorpCoffee.Camadas;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas.DTO;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,36 +10,60 @@ namespace CapsuleCorpCoffee.Forms
     public partial class FormFazerReceita : Form
     {
         #region Propriedades, Váriaveis e Atributos
-        public Receita Receita = new Receita();
-        public int Quantidade;
+
+        private ReceitaBUS receitaBUS;
+        private CapsulaReceitaBUS capsulaReceitaBUS;
+        private EstoqueBUS estoqueBUS;
+
         #endregion
 
         #region Construtores
         public FormFazerReceita()
         {
             InitializeComponent();
+
+            this.receitaBUS = FactoryBUS.CreateReceitaBUS();
+            this.capsulaReceitaBUS = FactoryBUS.CreateCapsulaReceitaBUS();
+            this.estoqueBUS = FactoryBUS.CreateEstoqueBUS();
         }
         #endregion
 
         #region Eventos
         private void FormFazerReceita_Load(object sender, EventArgs e)
         {
-            List<Receita> receitas = Receita.ListarReceitas();
+            List<Receita> receitas = this.receitaBUS.Listar();
 
-            cmbReceitas.Items.Clear();
-            cmbReceitas.DataSource = receitas;
-            cmbReceitas.DisplayMember = "Descricao";
-            cmbReceitas.SelectedIndex = 0;
+            MontarComboBox(receitas);
         }
 
         private void btnFazer_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(cmbQuantidade.Text.ToString(), out Quantidade);
-            Receita = (Receita)cmbReceitas.SelectedItem;
+            int quantidade;
+            Int32.TryParse(cmbQuantidade.Text.ToString(), out quantidade);
+            Receita receita = (Receita)cmbReceitas.SelectedItem;
 
-            if (ValidarCampos())
+            if (ValidarCampos(receita, quantidade))
             {
-                FazerReceita();
+                List<CapsulaReceita> capsulas = this.capsulaReceitaBUS.ListarPorReceita(receita.ID);
+                
+                if (this.ChecarQuantidades(capsulas, quantidade))
+                {
+                    FazerReceita(capsulas, quantidade);
+
+                    MessageBox.Show("Receita preparada com sucesso. Favor efetuar a avaliação da receita.", "Sucesso");
+
+                    ChamarAvaliacao(receita);
+                }
+                else
+                {
+                    MessageBox.Show("Não existem itens suficientes no estoque para fazer essa receita.", "Erro");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Receita inválida ou quantidade inválida. Cheque os campos e tente novamente.", "Erro");
+                return;
             }
         }
 
@@ -48,57 +74,47 @@ namespace CapsuleCorpCoffee.Forms
         #endregion
 
         #region Métodos
-        private void FazerReceita()
+        private void MontarComboBox(List<Receita> receitas)
         {
-            if (ValidarCampos())
-            {
-                Dictionary<ReceitaItem, List<Estoque>> estoqueItems = new Dictionary<ReceitaItem, List<Estoque>>();
-
-                foreach (ReceitaItem item in Receita.Items)
-                {
-                    estoqueItems.Add(item, Estoque.PegarEstoquePorItemQuantidade(item));
-                }
-
-                if (ChecarQuantidades(estoqueItems, Quantidade))
-                {
-                    FazerReceita(Receita, estoqueItems, Quantidade);
-                    ChamarAvaliacao(Receita);
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Não existe itens suficientes em estoque para fazer essa receita.", "Estoque insuficiente.");
-                    return;
-                }
-            }
+            cmbReceitas.Items.Clear();
+            cmbReceitas.DataSource = receitas;
+            cmbReceitas.DisplayMember = "Descricao";
+            cmbReceitas.SelectedIndex = 0;
         }
 
-        private bool ChecarQuantidades(Dictionary<ReceitaItem, List<Estoque>> listagem, int xicaras)
+        private bool ChecarQuantidades(List<CapsulaReceita> capsulas, int xicaras)
         {
-            foreach (KeyValuePair<ReceitaItem, List<Estoque>> etapa in listagem)
+            if (capsulas.Count == 0)
+                return false;
+
+            foreach (CapsulaReceita capsula in capsulas)
             {
                 int quantidade = 0;
 
-                foreach (Estoque est in etapa.Value)
-                {
-                    quantidade += est.Quantidade;
-                }
+                List<Estoque> estoque = estoqueBUS.PegarEstoquePorItemQuantidade(capsula.Capsula);
 
-                if (quantidade < (etapa.Key.Quantidade * xicaras))
+                foreach (Estoque item in estoque)
+                    quantidade += item.Quantidade;
+
+                if (quantidade < (capsula.Quantidade * xicaras))
                     return false;
             }
+
             return true;
         }
 
-        private void FazerReceita(Receita receita, Dictionary<ReceitaItem, List<Estoque>> estoqueItens, int quantidade)
+        private void FazerReceita(List<CapsulaReceita> capsulas, int xicaras)
         {
-            foreach (ReceitaItem item in receita.Items)
+            foreach (CapsulaReceita capsula in capsulas)
             {
-                int faltante = item.Quantidade * quantidade;
-                List<Estoque> lista = estoqueItens[item];
-                foreach (Estoque itemEstoque in lista)
+                int faltante = capsula.Quantidade * xicaras;
+
+                List<Estoque> lista = this.estoqueBUS.PegarEstoquePorItemQuantidade(capsula.Capsula);
+
+                foreach (Estoque item in lista)
                 {
-                    faltante = itemEstoque.AbaixaEstoque(Math.Abs(faltante));
+                    faltante = this.estoqueBUS.AbaixaEstoque(Math.Abs(faltante), item);
+
                     if (faltante == 0)
                         break;
                 }
@@ -107,23 +123,22 @@ namespace CapsuleCorpCoffee.Forms
 
         public void ChamarAvaliacao(Receita receita)
         {
-            FormAvaliacao form = new FormAvaliacao(receita);
-            DialogResult retorno = form.ShowDialog();
+            AbrirFormAvaliacao(receita);
         }
 
-        private bool ValidarCampos()
+        public void AbrirFormAvaliacao(Receita receita)
         {
-            if (Receita.ID < 0)
-            {
-                MessageBox.Show("Receita selecionada é inválida.", "Receita Inválida");
-                return false;
-            }
+            FormAvaliacao form = new FormAvaliacao(receita);
+            form.ShowDialog();
+        }
 
-            if (Quantidade < 0 || Quantidade > 10)
-            {
-                MessageBox.Show("Receita selecionada é inválida.", "Receita Inválida");
+        private bool ValidarCampos(Receita receita, int quantidade)
+        {
+            if (receita.ID < 0)
                 return false;
-            }
+
+            if (quantidade < 1 || quantidade > 10)
+                return false;
 
             return true;
         }

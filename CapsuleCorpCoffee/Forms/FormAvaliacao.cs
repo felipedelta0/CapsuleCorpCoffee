@@ -1,4 +1,6 @@
-﻿using CapsuleCorpCoffee.DAL.Models;
+﻿using CapsuleCorpCoffee.Camadas;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas.DTO;
 using System;
 using System.Windows.Forms;
 
@@ -7,54 +9,61 @@ namespace CapsuleCorpCoffee.Forms
     public partial class FormAvaliacao : Form
     {
         #region Propriedades, Variáveis e Atributos
-        public Avaliacao Avaliacao;
+
+        private AvaliacaoBUS avaliacaoBUS;
+        private Receita receita;
+
         #endregion
 
         #region Construtores
         public FormAvaliacao(Receita receita)
         {
             InitializeComponent();
-            Avaliacao = new Avaliacao();
-            Avaliacao.Receita = receita.ID;
-            lblReceita.Text += receita.Descricao;
+
+            this.avaliacaoBUS = FactoryBUS.CreateAvaliacaoBUS();
+            this.receita = receita;
+
+            lblReceita.Text += $" {receita.Descricao}";
         }
         #endregion
 
         #region Eventos
         private void btnAvaliar_Click(object sender, EventArgs e)
         {
-            int nota;
-            Int32.TryParse(cmbNota.Text.ToString(), out nota);
-            Avaliacao.Nota = nota;
-            Avaliacao.Usuario = txtUsuario.Text.ToString().Trim();
-            Avaliacao.Comentario = txtComentario.Text.ToString().Trim();
+            Avaliacao avaliacao = ConstruirObjeto();
 
-            if (ValidarCampos())
+            if (avaliacaoBUS.ValidarCampos(avaliacao))
             {
-                Avaliacao.Salvar();
-                MessageBox.Show("Sua avaliação foi salva com sucesso! Obrigado!", "Sucesso");
+                if (avaliacaoBUS.Salvar(avaliacao))
+                    MessageBox.Show("Sua avaliação foi salva com sucesso! Obrigado!", "Sucesso");
+                else
+                    MessageBox.Show("Erro ao salvar avaliação. Obrigado pela atenção.", "Finalizado");
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Favor validar os campos e tentar novamente.", "Campos Inválidos");
+                return;
             }
         }
         #endregion
 
         #region Métodos
-        private bool ValidarCampos()
+        private Avaliacao ConstruirObjeto()
         {
-            if (Avaliacao.Nota < 1 || Avaliacao.Nota > 5)
-            {
-                MessageBox.Show("Nota Inválida.", "Erro");
-                return false;
-            }
+            Avaliacao avaliacao = new Avaliacao();
 
-            if (Avaliacao.Receita < 0)
-            {
-                MessageBox.Show("Receita Inválida.", "Erro");
-                return false;
-            }
+            int nota;
+            Int32.TryParse(cmbNota.Text.ToString(), out nota);
 
-            return true;
+            avaliacao.Nota = nota;
+            avaliacao.Receita = receita.ID;
+            avaliacao.Usuario = txtUsuario.Text.ToString().Trim();
+            avaliacao.Comentario = txtComentario.Text.ToString().Trim();
+
+            return avaliacao;
         }
+
         #endregion
     }
 }

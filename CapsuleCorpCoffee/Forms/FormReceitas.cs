@@ -3,6 +3,7 @@ using CapsuleCorpCoffee.Camadas.Business;
 using CapsuleCorpCoffee.Camadas.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CapsuleCorpCoffee.Forms
@@ -13,6 +14,8 @@ namespace CapsuleCorpCoffee.Forms
 
         private ReceitaBUS receitaBUS;
         private CapsulaReceitaBUS capsulaReceitaBUS;
+        private AvaliacaoBUS avaliacaoBUS;
+        private CapsulaBUS capsulaBUS;
 
         #endregion
 
@@ -23,6 +26,8 @@ namespace CapsuleCorpCoffee.Forms
 
             this.receitaBUS = FactoryBUS.CreateReceitaBUS();
             this.capsulaReceitaBUS = FactoryBUS.CreateCapsulaReceitaBUS();
+            this.avaliacaoBUS = FactoryBUS.CreateAvaliacaoBUS();
+            this.capsulaBUS = FactoryBUS.CreateCapsulaBUS();
         }
         #endregion
 
@@ -69,12 +74,11 @@ namespace CapsuleCorpCoffee.Forms
             }
         }
 
-        // REWORK
         private void btnFazer_Click(object sender, EventArgs e)
         {
-            //FormFazerReceita form = new FormFazerReceita();
-            //DialogResult retorno = form.ShowDialog();
-            //AtualizarView();
+            AbrirFormFazerReceita();
+
+            AtualizarView();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -84,6 +88,13 @@ namespace CapsuleCorpCoffee.Forms
         #endregion
 
         #region Métodos
+
+        private void AbrirFormFazerReceita()
+        {
+            FormFazerReceita form = new FormFazerReceita();
+
+            form.ShowDialog();
+        }
 
         private void AbrirFormEditor()
         {
@@ -113,13 +124,34 @@ namespace CapsuleCorpCoffee.Forms
         {
             dgvReceitas.Rows.Clear();
 
-            foreach (Receita item in receitas)
+            foreach (Receita receita in receitas)
             {
-                //double notaMedia = Avaliacao.ObterMedia(item.ID);
-                //dgvReceitas.Rows.Add(item.ID, item.Descricao, item.MostrarCapsulas, item.QuantidadeTotalCapsulas, notaMedia > -1 ? notaMedia.ToString("N2") : "");
+                double notaMedia = avaliacaoBUS.ObterMedia(receita.ID);
 
-                dgvReceitas.Rows.Add(item.ID, item.Descricao, "AAAAAAAAAAA", 42, "000");
+                List<CapsulaReceita> items = capsulaReceitaBUS.ListarPorReceita(receita.ID);
+
+                dgvReceitas.Rows.Add(receita.ID, receita.Descricao, this.StringCapsulas(items), this.QuantidadeCapsulas(items), notaMedia > -1 ? notaMedia.ToString("N2") : "");
             }
+        }
+
+        private string StringCapsulas(List<CapsulaReceita> items)
+        {
+            string retorno = "";
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (i > 0)
+                    retorno += ", ";
+
+                Capsula capsula = capsulaBUS.SelecionarPorID(items[i].Capsula);
+
+                retorno += capsula.Descricao;
+            }
+            return retorno;
+        }
+
+        private int QuantidadeCapsulas(List<CapsulaReceita> items)
+        {
+            return items.Sum(item => item.Quantidade);
         }
 
         private int PegarItemID()
