@@ -18,5 +18,15 @@ namespace CapsuleCorpCoffee.Camadas
         {
             return new EstoqueDAO();
         }
+
+        public static ReceitaDAO CreateReceitaDAO()
+        {
+            return new ReceitaDAO();
+        }
+
+        public static CapsulaReceitaDAO CreateCapsulaReceitaDAO()
+        {
+            return new CapsulaReceitaDAO();
+        }
     }
 }

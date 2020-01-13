@@ -1,4 +1,6 @@
-﻿using CapsuleCorpCoffee.DAL.Models;
+﻿using CapsuleCorpCoffee.Camadas;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas.DTO;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,10 +9,20 @@ namespace CapsuleCorpCoffee.Forms
 {
     public partial class FormReceitas : Form
     {
+        #region Propriedades, Variáveis e Atributos
+
+        private ReceitaBUS receitaBUS;
+        private CapsulaReceitaBUS capsulaReceitaBUS;
+
+        #endregion
+
         #region Construtores
         public FormReceitas()
         {
             InitializeComponent();
+
+            this.receitaBUS = FactoryBUS.CreateReceitaBUS();
+            this.capsulaReceitaBUS = FactoryBUS.CreateCapsulaReceitaBUS();
         }
         #endregion
 
@@ -22,9 +34,7 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            FormCadastrarReceita formEditor = new FormCadastrarReceita();
-
-            DialogResult res = formEditor.ShowDialog();
+            this.AbrirFormEditor();
 
             AtualizarView();
         }
@@ -35,19 +45,20 @@ namespace CapsuleCorpCoffee.Forms
 
             if (itemID > 0)
             {
-                Receita receita = new Receita(itemID);
+                Receita receita = this.receitaBUS.SelecionarPorID(itemID);
 
                 if (MessageBox.Show($"Tem certeza que deseja apagar a receita de {receita.Descricao}?", "Tem certeza?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    foreach (ReceitaItem item in receita.Items)
-                        item.Excluir();
+                    ApagarItemsReceita(receita.ID);
 
                     string receitaDesc = receita.Descricao;
 
-                    bool exclusao = receita.Excluir();
+                    bool exclusao = this.receitaBUS.Excluir(receita);
 
                     if (exclusao)
                         MessageBox.Show($"Receita de {receitaDesc} excluída com sucesso!");
+                    else
+                        MessageBox.Show($"Erro ao excluir receita de {receitaDesc}.");
 
                     AtualizarView();
                 }
@@ -58,11 +69,12 @@ namespace CapsuleCorpCoffee.Forms
             }
         }
 
+        // REWORK
         private void btnFazer_Click(object sender, EventArgs e)
         {
-            FormFazerReceita form = new FormFazerReceita();
-            DialogResult retorno = form.ShowDialog();
-            AtualizarView();
+            //FormFazerReceita form = new FormFazerReceita();
+            //DialogResult retorno = form.ShowDialog();
+            //AtualizarView();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -72,15 +84,24 @@ namespace CapsuleCorpCoffee.Forms
         #endregion
 
         #region Métodos
+
+        private void AbrirFormEditor()
+        {
+            FormEditorReceita formEditor = new FormEditorReceita();
+
+            formEditor.ShowDialog();
+        }
+
         private void AtualizarView()
         {
             int index = PegarIndexDeSelecao();
 
-            List<Receita> receitas = new List<Receita>();
-            receitas = Receita.ListarReceitas();
+            List<Receita> receitas = this.receitaBUS.Listar();
 
             MontarView(receitas);
-            dgvReceitas.Rows[index].Selected = true;
+
+            if (receitas.Count > 0)
+                dgvReceitas.Rows[index].Selected = true;
         }
 
         private int PegarIndexDeSelecao()
@@ -94,8 +115,10 @@ namespace CapsuleCorpCoffee.Forms
 
             foreach (Receita item in receitas)
             {
-                double notaMedia = Avaliacao.ObterMedia(item.ID);
-                dgvReceitas.Rows.Add(item.ID, item.Descricao, item.MostrarCapsulas, item.QuantidadeTotalCapsulas, notaMedia > -1 ? notaMedia.ToString("N2") : "");
+                //double notaMedia = Avaliacao.ObterMedia(item.ID);
+                //dgvReceitas.Rows.Add(item.ID, item.Descricao, item.MostrarCapsulas, item.QuantidadeTotalCapsulas, notaMedia > -1 ? notaMedia.ToString("N2") : "");
+
+                dgvReceitas.Rows.Add(item.ID, item.Descricao, "AAAAAAAAAAA", 42, "000");
             }
         }
 
@@ -104,6 +127,14 @@ namespace CapsuleCorpCoffee.Forms
             int itemID;
             Int32.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
             return itemID;
+        }
+
+        private void ApagarItemsReceita(int receita)
+        {
+            List<CapsulaReceita> capsulas = capsulaReceitaBUS.ListarPorReceita(receita);
+
+            foreach (CapsulaReceita capsula in capsulas)
+                capsulaReceitaBUS.Excluir(capsula);
         }
         #endregion
     }

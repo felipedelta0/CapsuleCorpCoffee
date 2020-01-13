@@ -1,6 +1,6 @@
 ﻿namespace CapsuleCorpCoffee.Forms
 {
-    partial class FormCadastrarReceita
+    partial class FormEditorReceita
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastrarReceita));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditorReceita));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEscolher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flowControles = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -121,7 +121,7 @@
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.Controls.Add(this.txtNomeReceita);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.btnAlterar);
+            this.panel2.Controls.Add(this.btnLimpar);
             this.panel2.Controls.Add(this.btnSair);
             this.panel2.Controls.Add(this.btnSalvar);
             this.panel2.Location = new System.Drawing.Point(1, 313);
@@ -129,16 +129,16 @@
             this.panel2.Size = new System.Drawing.Size(323, 64);
             this.panel2.TabIndex = 2;
             // 
-            // btnAlterar
+            // btnLimpar
             // 
-            this.btnAlterar.Enabled = false;
-            this.btnAlterar.Location = new System.Drawing.Point(3, 34);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterar.TabIndex = 4;
-            this.btnAlterar.Text = "Limpar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            this.btnLimpar.Enabled = false;
+            this.btnLimpar.Location = new System.Drawing.Point(3, 34);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 4;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnSair
             // 
@@ -161,7 +161,7 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // FormCadastrarReceita
+            // FormEditorReceita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,7 +177,7 @@
             this.MaximumSize = new System.Drawing.Size(340, 610);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(340, 39);
-            this.Name = "FormCadastrarReceita";
+            this.Name = "FormEditorReceita";
             this.Text = "Cadastrar Nova Receita";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -197,7 +197,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowControles;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtNomeReceita;
         private System.Windows.Forms.Label label2;

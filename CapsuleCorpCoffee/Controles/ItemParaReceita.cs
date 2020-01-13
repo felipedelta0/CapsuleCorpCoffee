@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Linq;
-using CapsuleCorpCoffee.DAL.Models;
+using CapsuleCorpCoffee.Camadas.DTO;
+using CapsuleCorpCoffee.Camadas.Business;
+using CapsuleCorpCoffee.Camadas;
+using System.Collections.Generic;
 
 namespace CapsuleCorpCoffee.Controles
 {
     internal partial class ItemParaReceita : UserControl
     {
         #region Propriedades, Váriaveis e Atributos
-        public TipoCapsula CapsulaEscolhida
+        private CapsulaBUS capsulaBUS;
+
+        public Capsula CapsulaEscolhida
         {
             get
             {
-                return (TipoCapsula)cmbCapsula.SelectedItem;
+                return (Capsula)cmbCapsula.SelectedItem;
             }
         }
 
@@ -31,6 +36,8 @@ namespace CapsuleCorpCoffee.Controles
         public ItemParaReceita()
         {
             InitializeComponent();
+
+            capsulaBUS = FactoryBUS.CreateCapsulaBUS();
         }
         #endregion
 
@@ -44,19 +51,21 @@ namespace CapsuleCorpCoffee.Controles
         #region Métodos
         private void MontarComboBox()
         {
-            cmbCapsula.Items.Clear();
+            List<Capsula> capsulas = capsulaBUS.Listar();
 
-            CarregarCapsulasNoCombo();
+            PopularComboBox(capsulas);
 
             cmbCapsula.DisplayMember = "Descricao";
-
-            cmbCapsula.SelectedIndex = 0;
         }
 
-        private void CarregarCapsulasNoCombo()
+        private void PopularComboBox(List<Capsula> capsulas)
         {
-            foreach (TipoCapsula capsula in TipoCapsula.CarregarCapsulas())
+            cmbCapsula.Items.Clear();
+
+            foreach (Capsula capsula in capsulas)
                 cmbCapsula.Items.Add(capsula);
+
+            cmbCapsula.SelectedIndex = 0;
         }
         #endregion
     }

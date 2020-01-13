@@ -18,5 +18,14 @@ namespace CapsuleCorpCoffee.Camadas
         {
             return new EstoqueBUS();
         }
+        public static ReceitaBUS CreateReceitaBUS()
+        {
+            return new ReceitaBUS();
+        }
+
+        public static CapsulaReceitaBUS CreateCapsulaReceitaBUS()
+        {
+            return new CapsulaReceitaBUS();
+        }
     }
 }

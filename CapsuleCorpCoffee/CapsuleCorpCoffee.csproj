@@ -47,12 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camadas\Business\CapsulaBUS.cs" />
+    <Compile Include="Camadas\Business\CapsulaReceitaBUS.cs" />
     <Compile Include="Camadas\Business\EstoqueBUS.cs" />
+    <Compile Include="Camadas\Business\ReceitaBUS.cs" />
     <Compile Include="Camadas\DAO\CapsulaDAO.cs" />
+    <Compile Include="Camadas\DAO\CapsulaReceitaDAO.cs" />
     <Compile Include="Camadas\DAO\EstoqueDAO.cs" />
+    <Compile Include="Camadas\DAO\ReceitaDAO.cs" />
     <Compile Include="Camadas\DBConexao.cs" />
     <Compile Include="Camadas\DTO\Capsula.cs" />
+    <Compile Include="Camadas\DTO\CapsulaReceita.cs" />
     <Compile Include="Camadas\DTO\Estoque.cs" />
+    <Compile Include="Camadas\DTO\Receita.cs" />
     <Compile Include="Camadas\FactoryDAO.cs" />
     <Compile Include="Camadas\FactoryBUS.cs" />
     <Compile Include="Camadas\Interfaces\IBusinessLayer.cs" />
@@ -74,11 +80,11 @@
     <Compile Include="DAL\Persistencia\ReceitaDAL.cs" />
     <Compile Include="DAL\Persistencia\ReceitaItemDAL.cs" />
     <Compile Include="DAL\Persistencia\TipoCapsulaDAL.cs" />
-    <Compile Include="Forms\FormCadastrarReceita.cs">
+    <Compile Include="Forms\FormEditorReceita.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormCadastrarReceita.Designer.cs">
-      <DependentUpon>FormCadastrarReceita.cs</DependentUpon>
+    <Compile Include="Forms\FormEditorReceita.Designer.cs">
+      <DependentUpon>FormEditorReceita.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormEditorCapsulas.cs">
       <SubType>Form</SubType>
@@ -133,8 +139,8 @@
     <EmbeddedResource Include="Controles\ItemParaReceita.resx">
       <DependentUpon>ItemParaReceita.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormCadastrarReceita.resx">
-      <DependentUpon>FormCadastrarReceita.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormEditorReceita.resx">
+      <DependentUpon>FormEditorReceita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEditorCapsulas.resx">
       <DependentUpon>FormEditorCapsulas.cs</DependentUpon>

@@ -69,6 +69,8 @@ namespace CapsuleCorpCoffee.Forms
 
                     if (exclusao)
                         MessageBox.Show($"Estoque de {capsula.Descricao} foi excluído com sucesso!");
+                    else
+                        MessageBox.Show($"Erro ao excluir estoque de {capsula.Descricao}.");
 
                     AtualizarView();
                 }
