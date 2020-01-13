@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using CapsuleCorpCoffee.Controles;
 using System;
 using System.Collections.Generic;
@@ -106,19 +106,22 @@ namespace CapsuleCorpCoffee.Forms
         {
             List<CapsulaReceita> capsulas = new List<CapsulaReceita>();
 
-            foreach (ItemParaReceita controle in flowControles.Controls)
+            if (capsulas.Count > 0)
             {
-                Capsula capsula = controle.CapsulaEscolhida;
+                foreach (ItemParaReceita controle in flowControles.Controls)
+                {
+                    Capsula capsula = controle.CapsulaEscolhida;
 
-                CapsulaReceita capsulaReceita = new CapsulaReceita();
+                    CapsulaReceita capsulaReceita = new CapsulaReceita();
 
-                capsulaReceita.Capsula = capsula.ID;
-                capsulaReceita.Quantidade = controle.QuantidadeEscolhida;
+                    capsulaReceita.Capsula = capsula.ID;
+                    capsulaReceita.Quantidade = controle.QuantidadeEscolhida;
 
-                if (capsulaReceitaBUS.ValidarCampos(capsulaReceita))
-                    capsulas.Add(capsulaReceita);
-                else
-                    return new List<CapsulaReceita>();
+                    if (capsulaReceitaBUS.ValidarCampos(capsulaReceita))
+                        capsulas.Add(capsulaReceita);
+                    else
+                        return new List<CapsulaReceita>();
+                }
             }
 
             return capsulas;

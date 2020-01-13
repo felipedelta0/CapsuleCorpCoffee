@@ -46,43 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camadas\Business\AvaliacaoBUS.cs" />
-    <Compile Include="Camadas\Business\CapsulaBUS.cs" />
-    <Compile Include="Camadas\Business\CapsulaReceitaBUS.cs" />
-    <Compile Include="Camadas\Business\EstoqueBUS.cs" />
-    <Compile Include="Camadas\Business\ReceitaBUS.cs" />
-    <Compile Include="Camadas\DAO\CapsulaDAO.cs" />
-    <Compile Include="Camadas\DAO\CapsulaReceitaDAO.cs" />
-    <Compile Include="Camadas\DAO\AvaliacaoDAO.cs" />
-    <Compile Include="Camadas\DAO\EstoqueDAO.cs" />
-    <Compile Include="Camadas\DAO\ReceitaDAO.cs" />
-    <Compile Include="Camadas\DBConexao.cs" />
-    <Compile Include="Camadas\DTO\Capsula.cs" />
-    <Compile Include="Camadas\DTO\CapsulaReceita.cs" />
-    <Compile Include="Camadas\DTO\Avaliacao.cs" />
-    <Compile Include="Camadas\DTO\Estoque.cs" />
-    <Compile Include="Camadas\DTO\Receita.cs" />
-    <Compile Include="Camadas\FactoryDAO.cs" />
-    <Compile Include="Camadas\FactoryBUS.cs" />
-    <Compile Include="Camadas\Interfaces\IBusinessLayer.cs" />
-    <Compile Include="Camadas\Interfaces\IDataAccessObject.cs" />
     <Compile Include="Controles\ItemParaReceita.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controles\ItemParaReceita.Designer.cs">
       <DependentUpon>ItemParaReceita.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL\__Models\Avaliacao.cs" />
-    <Compile Include="DAL\__Models\ReceitaItem.cs" />
-    <Compile Include="DAL\__Models\TipoCapsula.cs" />
-    <Compile Include="DAL\__Models\_Estoque.cs" />
-    <Compile Include="DAL\__Models\Receita.cs" />
-    <Compile Include="DAL\__Persistencia\AvaliacaoDAL.cs" />
-    <Compile Include="DAL\__Persistencia\Conexao.cs" />
-    <Compile Include="DAL\__Persistencia\EstoqueDAL.cs" />
-    <Compile Include="DAL\__Persistencia\ReceitaDAL.cs" />
-    <Compile Include="DAL\__Persistencia\ReceitaItemDAL.cs" />
-    <Compile Include="DAL\__Persistencia\TipoCapsulaDAL.cs" />
     <Compile Include="Forms\FormEditorReceita.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,13 +161,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Npgsql">
-      <Version>4.1.2</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Recursos\" />
     <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapsuleCorpCoffeeBUS\CapsuleCorpCoffeeBUS.csproj">
+      <Project>{F6CD9652-9895-4D0B-81BD-B4490E0F7F2F}</Project>
+      <Name>CapsuleCorpCoffeeBUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapsuleCorpCoffeeDTO\CapsuleCorpCoffeeDTO.csproj">
+      <Project>{C0042A3C-B80D-4AD5-9B19-96B44105EB5A}</Project>
+      <Name>CapsuleCorpCoffeeDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +71,11 @@ namespace CapsuleCorpCoffee.Forms
                 {
                     return;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma receita selecionada", "Erro");
+                return;
             }
         }
 
@@ -157,7 +162,11 @@ namespace CapsuleCorpCoffee.Forms
         private int PegarItemID()
         {
             int itemID;
-            Int32.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
+            if (dgvReceitas.SelectedRows.Count > 0)
+                Int32.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
+            else
+                itemID = -1;
+
             return itemID;
         }
 

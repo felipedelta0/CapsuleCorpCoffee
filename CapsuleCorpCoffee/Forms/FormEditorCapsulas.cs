@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Windows.Forms;
 

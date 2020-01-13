@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
 using CapsuleCorpCoffee.Forms;
 
 namespace CapsuleCorpCoffee
@@ -51,13 +51,5 @@ namespace CapsuleCorpCoffee
             formEstoque.ShowDialog();
         }
         #endregion
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            CapsulaBUS caps = new CapsulaBUS();
-            Capsula cap = caps.SelecionarPorID(1);
-
-        }
     }
 }

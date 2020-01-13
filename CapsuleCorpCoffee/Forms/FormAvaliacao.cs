@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Windows.Forms;
 
@@ -24,6 +24,7 @@ namespace CapsuleCorpCoffee.Forms
             this.receita = receita;
 
             lblReceita.Text += $" {receita.Descricao}";
+            cmbNota.SelectedIndex = 0;
         }
         #endregion
 

@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -65,20 +65,28 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            MontarRegistro();
-
-            if (this.estoqueBUS.ValidarCampos(this.ItemEstoque))
+            if (ValidarComboBox())
             {
-                if (this.estoqueBUS.Salvar(this.ItemEstoque))
-                    MessageBox.Show("Registro salvo com sucesso!", "Sucesso");
-                else
-                    MessageBox.Show("Erro ao salvar o registro. Tente novamente", "Erro ao Salvar");
+                MontarRegistro();
 
-                this.Close();
+                if (this.estoqueBUS.ValidarCampos(this.ItemEstoque))
+                {
+                    if (this.estoqueBUS.Salvar(this.ItemEstoque))
+                        MessageBox.Show("Registro salvo com sucesso!", "Sucesso");
+                    else
+                        MessageBox.Show("Erro ao salvar o registro. Tente novamente", "Erro ao Salvar");
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Registro inválido. Favor verificar todos os campos", "Erro ao Validar");
+                }
             }
             else
             {
-                MessageBox.Show("Registro inválido. Favor verificar todos os campos", "Erro ao Validar");
+                MessageBox.Show("Nenhum item selecionado.", "Erro ao Validar");
+                return;
             }
         }
         #endregion
@@ -108,7 +116,7 @@ namespace CapsuleCorpCoffee.Forms
                 }
             }
 
-            cmbCapsula.SelectedIndex = index;
+            cmbCapsula.SelectedIndex = capsulas.Count > 0 ? index : -1;
         }
 
         private void MontarRegistro()
@@ -116,9 +124,16 @@ namespace CapsuleCorpCoffee.Forms
             int quantidade;
             Int32.TryParse(txtQuantidade.Text.ToString(), out quantidade);
 
-            this.ItemEstoque.Capsula = ((Capsula)cmbCapsula.SelectedItem).ID;
+            this.ItemEstoque.Capsula = cmbCapsula.SelectedItem == null ? -1 : ((Capsula)cmbCapsula.SelectedItem).ID;
             this.ItemEstoque.Quantidade = quantidade;
             this.ItemEstoque.Validade = datePicker.Value;
+        }
+
+        private bool ValidarComboBox()
+        {
+            if (cmbCapsula.SelectedItem == null)
+                return false;
+            return true;
         }
 
         private void InicializarBUS()

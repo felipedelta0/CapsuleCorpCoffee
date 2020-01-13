@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -55,6 +55,11 @@ namespace CapsuleCorpCoffee.Forms
 
                 AtualizarView();
             }
+            else
+            {
+                MessageBox.Show("Nenhuma cápsula selecionada", "Erro");
+                return;
+            }
         }
         #endregion
 
@@ -96,7 +101,11 @@ namespace CapsuleCorpCoffee.Forms
         private int PegarIDCapsula()
         {
             int capsulaID;
-            Int32.TryParse(dgvCapsulas.SelectedRows[0].Cells[0].Value.ToString(), out capsulaID);
+            if (dgvCapsulas.SelectedRows.Count > 0)
+                Int32.TryParse(dgvCapsulas.SelectedRows[0].Cells[0].Value.ToString(), out capsulaID);
+            else
+                capsulaID = -1;
+
             return capsulaID;
         }
 

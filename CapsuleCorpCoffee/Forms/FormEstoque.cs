@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -44,6 +44,11 @@ namespace CapsuleCorpCoffee.Forms
 
                 AtualizarView();
             }
+            else
+            {
+                MessageBox.Show("Nenhum item de estoque selecionado.", "Erro");
+                return;
+            }
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -78,6 +83,11 @@ namespace CapsuleCorpCoffee.Forms
                 {
                     return;
                 }
+            }
+            else
+            {
+                MessageBox.Show("Nenhum item de estoque selecionado.", "Erro");
+                return;
             }
         }
 
@@ -133,7 +143,11 @@ namespace CapsuleCorpCoffee.Forms
         private int PegarItemID()
         {
             int itemID;
-            Int32.TryParse(dgvEstoque.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
+            if (dgvEstoque.SelectedRows.Count > 0)
+                Int32.TryParse(dgvEstoque.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
+            else
+                itemID = -1;
+
             return itemID;
         }
         #endregion

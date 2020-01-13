@@ -1,6 +1,6 @@
-﻿using CapsuleCorpCoffee.Camadas;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas.DTO;
+﻿using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -33,6 +33,8 @@ namespace CapsuleCorpCoffee.Forms
         {
             List<Receita> receitas = this.receitaBUS.Listar();
 
+            cmbQuantidade.SelectedIndex = 0;
+
             MontarComboBox(receitas);
         }
 
@@ -53,6 +55,8 @@ namespace CapsuleCorpCoffee.Forms
                     MessageBox.Show("Receita preparada com sucesso. Favor efetuar a avaliação da receita.", "Sucesso");
 
                     ChamarAvaliacao(receita);
+
+                    this.Close();
                 }
                 else
                 {
@@ -79,7 +83,9 @@ namespace CapsuleCorpCoffee.Forms
             cmbReceitas.Items.Clear();
             cmbReceitas.DataSource = receitas;
             cmbReceitas.DisplayMember = "Descricao";
-            cmbReceitas.SelectedIndex = 0;
+
+            if (cmbReceitas.Items.Count > 0)
+                cmbReceitas.SelectedIndex = 0;
         }
 
         private bool ChecarQuantidades(List<CapsulaReceita> capsulas, int xicaras)
@@ -134,6 +140,9 @@ namespace CapsuleCorpCoffee.Forms
 
         private bool ValidarCampos(Receita receita, int quantidade)
         {
+            if (receita == null)
+                return false;
+
             if (receita.ID < 0)
                 return false;
 

@@ -122,7 +122,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormFazerReceita";
-            this.Text = "FormFazerReceita";
+            this.Text = "Fazer Receita";
             this.Load += new System.EventHandler(this.FormFazerReceita_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

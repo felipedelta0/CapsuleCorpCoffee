@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Linq;
-using CapsuleCorpCoffee.Camadas.DTO;
-using CapsuleCorpCoffee.Camadas.Business;
-using CapsuleCorpCoffee.Camadas;
 using System.Collections.Generic;
+using CapsuleCorpCoffeeBUS.Classes;
+using CapsuleCorpCoffeeDTO.Classes;
+using CapsuleCorpCoffeeBUS;
 
 namespace CapsuleCorpCoffee.Controles
 {
@@ -65,7 +64,8 @@ namespace CapsuleCorpCoffee.Controles
             foreach (Capsula capsula in capsulas)
                 cmbCapsula.Items.Add(capsula);
 
-            cmbCapsula.SelectedIndex = 0;
+            if (cmbCapsula.Items.Count > 0)
+                cmbCapsula.SelectedIndex = 0;
         }
         #endregion
     }
