@@ -6,7 +6,7 @@ namespace CapsuleCorpCoffeeDAO
     public class DBConexao
     {
         #region Propriedades
-        private string ConnString = "Host=localhost;Username=postgres;Password=postgres;Database=capsulecorpcoffeeDB";
+        public string ConnString = "Host=localhost;Username=postgres;Password=postgres;Database=capsulecorpcoffeeDB";
         protected NpgsqlConnection Conn;
         protected NpgsqlCommand Cmd;
         protected NpgsqlDataAdapter Adapter;

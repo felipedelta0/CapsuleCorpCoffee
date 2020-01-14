@@ -52,15 +52,15 @@
     <Compile Include="Classes\ReceitaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Npgsql">
+      <Version>4.1.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CapsuleCorpCoffeeDTO\CapsuleCorpCoffeeDTO.csproj">
       <Project>{C0042A3C-B80D-4AD5-9B19-96B44105EB5A}</Project>
       <Name>CapsuleCorpCoffeeDTO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Npgsql">
-      <Version>4.1.2</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
