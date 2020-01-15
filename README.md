@@ -10,7 +10,7 @@ O banco de dados utilizado é o **PostgreSQL**, para sua utilização é necess�
 
 Abaixo podemos ver qual a *cara do programa*:
 
-![CapsuleCorpCoffee_3W4YRnQnAJ](https://user-images.githubusercontent.com/10116449/72399718-b8aec300-3725-11ea-9715-5cb9f0aad494.png)
+![CapsuleCorpCoffee_uM4bp34UxH](https://user-images.githubusercontent.com/10116449/72399982-88b3ef80-3726-11ea-884c-878b154ca228.png)
 
 ## Funcionalidades
 * É possível cadastrar e alterar uma cápsula, a qual possui uma descrição e um nível de força da bebida.
