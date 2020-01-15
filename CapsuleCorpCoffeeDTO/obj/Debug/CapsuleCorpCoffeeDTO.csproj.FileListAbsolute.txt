@@ -1,0 +1,4 @@
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffeeDTO\bin\Debug\CapsuleCorpCoffeeDTO.dll
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffeeDTO\bin\Debug\CapsuleCorpCoffeeDTO.pdb
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffeeDTO\obj\Debug\CapsuleCorpCoffeeDTO.dll
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffeeDTO\obj\Debug\CapsuleCorpCoffeeDTO.pdb

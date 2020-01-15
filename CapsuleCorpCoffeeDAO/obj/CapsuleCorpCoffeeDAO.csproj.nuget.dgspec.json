@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDAO\\CapsuleCorpCoffeeDAO.csproj": {}
+  },
+  "projects": {
+    "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDAO\\CapsuleCorpCoffeeDAO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDAO\\CapsuleCorpCoffeeDAO.csproj",
+        "projectName": "CapsuleCorpCoffeeDAO",
+        "projectPath": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDAO\\CapsuleCorpCoffeeDAO.csproj",
+        "packagesPath": "C:\\Users\\luiss\\.nuget\\packages\\",
+        "outputPath": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDAO\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\luiss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDTO\\CapsuleCorpCoffeeDTO.csproj": {
+                "projectPath": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDTO\\CapsuleCorpCoffeeDTO.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Npgsql": {
+              "target": "Package",
+              "version": "[4.1.2, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDTO\\CapsuleCorpCoffeeDTO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDTO\\CapsuleCorpCoffeeDTO.csproj",
+        "projectName": "CapsuleCorpCoffeeDTO",
+        "projectPath": "Z:\\Programming\\CSharp\\DeMaria\\CapsuleCorpCoffee\\CapsuleCorpCoffeeDTO\\CapsuleCorpCoffeeDTO.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

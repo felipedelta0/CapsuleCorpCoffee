@@ -180,13 +180,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Recursos\estoque.png" />
+    <None Include="Recursos\estoque.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Recursos\receita.png" />
+    <None Include="Recursos\receita.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Recursos\sair.png" />
+    <None Include="Recursos\sair.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
