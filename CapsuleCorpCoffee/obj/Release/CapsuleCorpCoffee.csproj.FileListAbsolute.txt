@@ -1,3 +1,7 @@
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\capsula.png
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\estoque.png
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\receita.png
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\sair.png
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\CapsuleCorpCoffee.exe.config
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\CapsuleCorpCoffee.exe
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\CapsuleCorpCoffee.pdb
@@ -35,7 +39,3 @@ Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\obj\Release\Ca
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\obj\Release\CapsuleCorpCoffee.csproj.CopyComplete
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\obj\Release\CapsuleCorpCoffee.exe
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\obj\Release\CapsuleCorpCoffee.pdb
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\capsula.png
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\estoque.png
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\receita.png
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee\bin\Release\Recursos\sair.png

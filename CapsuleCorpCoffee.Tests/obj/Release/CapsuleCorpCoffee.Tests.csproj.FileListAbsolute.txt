@@ -20,11 +20,11 @@ Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Rele
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\xunit.core.dll
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\xunit.execution.desktop.dll
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeBUS.dll
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDTO.dll
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDAO.dll
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDTO.dll
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeBUS.pdb
-Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDTO.pdb
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDAO.pdb
+Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\bin\Release\CapsuleCorpCoffeeDTO.pdb
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\obj\Release\CapsuleCorpCoffee.Tests.csprojAssemblyReference.cache
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\obj\Release\CapsuleCorpCoffee.Tests.dll.config
 Z:\Programming\CSharp\DeMaria\CapsuleCorpCoffee\CapsuleCorpCoffee.Tests\obj\Release\CapsuleCorpCoffee.Tests.csproj.CopyComplete
