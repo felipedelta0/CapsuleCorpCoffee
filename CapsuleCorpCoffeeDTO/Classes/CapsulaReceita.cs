@@ -34,10 +34,10 @@ namespace CapsuleCorpCoffeeDTO.Classes
 
         public CapsulaReceita(DataRow row)
         {
-            ID = Int32.Parse(row["ID"].ToString());
-            Receita = Int32.Parse(row["Receita_ID"].ToString());
-            Capsula = Int32.Parse(row["Capsula_ID"].ToString());
-            Quantidade = Int32.Parse(row["Quantidade"].ToString());
+            ID = int.Parse(row["ID"].ToString());
+            Receita = int.Parse(row["Receita_ID"].ToString());
+            Capsula = int.Parse(row["Capsula_ID"].ToString());
+            Quantidade = int.Parse(row["Quantidade"].ToString());
         }
         #endregion
     }

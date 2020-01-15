@@ -31,7 +31,7 @@ namespace CapsuleCorpCoffee.Forms
         #region Eventos
         private void btnEscolher_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(cmbQuantidadeItens.Text, out Quantidade);
+            int.TryParse(cmbQuantidadeItens.Text, out Quantidade);
 
             if (Quantidade > 0)
             {
@@ -106,7 +106,7 @@ namespace CapsuleCorpCoffee.Forms
         {
             List<CapsulaReceita> capsulas = new List<CapsulaReceita>();
 
-            if (capsulas.Count > 0)
+            if (flowControles.Controls.Count > 0)
             {
                 foreach (ItemParaReceita controle in flowControles.Controls)
                 {

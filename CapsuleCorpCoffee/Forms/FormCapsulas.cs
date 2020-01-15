@@ -102,7 +102,7 @@ namespace CapsuleCorpCoffee.Forms
         {
             int capsulaID;
             if (dgvCapsulas.SelectedRows.Count > 0)
-                Int32.TryParse(dgvCapsulas.SelectedRows[0].Cells[0].Value.ToString(), out capsulaID);
+                int.TryParse(dgvCapsulas.SelectedRows[0].Cells[0].Value.ToString(), out capsulaID);
             else
                 capsulaID = -1;
 

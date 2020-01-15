@@ -30,6 +30,13 @@ namespace CapsuleCorpCoffee
         {
             AbrirEstoque();
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Obrigado por utilizar!", "Obrigado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
         #endregion
 
         #region Métodos

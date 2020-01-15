@@ -30,9 +30,9 @@ namespace CapsuleCorpCoffeeDTO.Classes
 
         public Capsula(DataRow row)
         {
-            this.ID = Int32.Parse(row["ID"].ToString());
+            this.ID = int.Parse(row["ID"].ToString());
             this.Descricao = row["Descricao"].ToString();
-            this.Forca = Int32.Parse(row["Forca"].ToString());
+            this.Forca = int.Parse(row["Forca"].ToString());
         }
         #endregion
     }

@@ -54,8 +54,7 @@ namespace CapsuleCorpCoffee.Forms
         {
             Avaliacao avaliacao = new Avaliacao();
 
-            int nota;
-            Int32.TryParse(cmbNota.Text.ToString(), out nota);
+            int.TryParse(cmbNota.Text.ToString(), out int nota);
 
             avaliacao.Nota = nota;
             avaliacao.Receita = receita.ID;

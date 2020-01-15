@@ -30,7 +30,7 @@ namespace CapsuleCorpCoffeeDTO.Classes
 
         public Receita(DataRow row)
         {
-            ID = Int32.Parse(row["ID"].ToString());
+            ID = int.Parse(row["ID"].ToString());
             Descricao = row["Descricao"].ToString();
             Items = new List<CapsulaReceita>();
         }

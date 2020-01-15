@@ -1,0 +1,376 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.6
+-- Dumped by pg_dump version 11.6
+
+-- Started on 2020-01-13 23:23:10
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'WIN1252';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2861 (class 1262 OID 16393)
+-- Name: capsulecorpcoffeeDB; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE "capsulecorpcoffeeDB" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE "capsulecorpcoffeeDB" OWNER TO "postgres";
+
+\connect "capsulecorpcoffeeDB"
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'WIN1252';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 205 (class 1259 OID 16428)
+-- Name: avaliacao; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE "public"."avaliacao" (
+    "ID" integer NOT NULL,
+    "Receita_ID" integer,
+    "Nota" integer,
+    "Usuario" character varying(50),
+    "Comentario" "text"
+);
+
+
+ALTER TABLE "public"."avaliacao" OWNER TO "postgres";
+
+--
+-- TOC entry 204 (class 1259 OID 16426)
+-- Name: avaliacao_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE "public"."avaliacao_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "public"."avaliacao_ID_seq" OWNER TO "postgres";
+
+--
+-- TOC entry 2862 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: avaliacao_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE "public"."avaliacao_ID_seq" OWNED BY "public"."avaliacao"."ID";
+
+
+--
+-- TOC entry 197 (class 1259 OID 16396)
+-- Name: capsulas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE "public"."capsulas" (
+    "ID" integer NOT NULL,
+    "Descricao" character varying(30),
+    "Forca" integer
+);
+
+
+ALTER TABLE "public"."capsulas" OWNER TO "postgres";
+
+--
+-- TOC entry 196 (class 1259 OID 16394)
+-- Name: capsula_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE "public"."capsula_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "public"."capsula_ID_seq" OWNER TO "postgres";
+
+--
+-- TOC entry 2863 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: capsula_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE "public"."capsula_ID_seq" OWNED BY "public"."capsulas"."ID";
+
+
+--
+-- TOC entry 201 (class 1259 OID 16412)
+-- Name: capsulareceita; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE "public"."capsulareceita" (
+    "ID" integer NOT NULL,
+    "Receita_ID" integer,
+    "Capsula_ID" integer,
+    "Quantidade" integer
+);
+
+
+ALTER TABLE "public"."capsulareceita" OWNER TO "postgres";
+
+--
+-- TOC entry 203 (class 1259 OID 16420)
+-- Name: estoque; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE "public"."estoque" (
+    "ID" integer NOT NULL,
+    "Capsula" integer,
+    "Validade" "date",
+    "Quantidade" integer
+);
+
+
+ALTER TABLE "public"."estoque" OWNER TO "postgres";
+
+--
+-- TOC entry 202 (class 1259 OID 16418)
+-- Name: capsulas_estoque_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE "public"."capsulas_estoque_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "public"."capsulas_estoque_ID_seq" OWNER TO "postgres";
+
+--
+-- TOC entry 2864 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: capsulas_estoque_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE "public"."capsulas_estoque_ID_seq" OWNED BY "public"."estoque"."ID";
+
+
+--
+-- TOC entry 200 (class 1259 OID 16410)
+-- Name: capsulas_receita_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE "public"."capsulas_receita_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "public"."capsulas_receita_ID_seq" OWNER TO "postgres";
+
+--
+-- TOC entry 2865 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: capsulas_receita_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE "public"."capsulas_receita_ID_seq" OWNED BY "public"."capsulareceita"."ID";
+
+
+--
+-- TOC entry 199 (class 1259 OID 16404)
+-- Name: receita; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE "public"."receita" (
+    "ID" integer NOT NULL,
+    "Descricao" character varying(50)
+);
+
+
+ALTER TABLE "public"."receita" OWNER TO "postgres";
+
+--
+-- TOC entry 198 (class 1259 OID 16402)
+-- Name: receita_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE "public"."receita_ID_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "public"."receita_ID_seq" OWNER TO "postgres";
+
+--
+-- TOC entry 2866 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: receita_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE "public"."receita_ID_seq" OWNED BY "public"."receita"."ID";
+
+
+--
+-- TOC entry 2714 (class 2604 OID 16431)
+-- Name: avaliacao ID; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."avaliacao" ALTER COLUMN "ID" SET DEFAULT "nextval"('"public"."avaliacao_ID_seq"'::"regclass");
+
+
+--
+-- TOC entry 2712 (class 2604 OID 16415)
+-- Name: capsulareceita ID; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."capsulareceita" ALTER COLUMN "ID" SET DEFAULT "nextval"('"public"."capsulas_receita_ID_seq"'::"regclass");
+
+
+--
+-- TOC entry 2710 (class 2604 OID 16399)
+-- Name: capsulas ID; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."capsulas" ALTER COLUMN "ID" SET DEFAULT "nextval"('"public"."capsula_ID_seq"'::"regclass");
+
+
+--
+-- TOC entry 2713 (class 2604 OID 16423)
+-- Name: estoque ID; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."estoque" ALTER COLUMN "ID" SET DEFAULT "nextval"('"public"."capsulas_estoque_ID_seq"'::"regclass");
+
+
+--
+-- TOC entry 2711 (class 2604 OID 16407)
+-- Name: receita ID; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."receita" ALTER COLUMN "ID" SET DEFAULT "nextval"('"public"."receita_ID_seq"'::"regclass");
+
+
+--
+-- TOC entry 2855 (class 0 OID 16428)
+-- Dependencies: 205
+-- Data for Name: avaliacao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2851 (class 0 OID 16412)
+-- Dependencies: 201
+-- Data for Name: capsulareceita; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2847 (class 0 OID 16396)
+-- Dependencies: 197
+-- Data for Name: capsulas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2853 (class 0 OID 16420)
+-- Dependencies: 203
+-- Data for Name: estoque; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2849 (class 0 OID 16404)
+-- Dependencies: 199
+-- Data for Name: receita; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2724 (class 2606 OID 16436)
+-- Name: avaliacao avaliacao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."avaliacao"
+    ADD CONSTRAINT "avaliacao_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 2716 (class 2606 OID 16401)
+-- Name: capsulas capsula_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."capsulas"
+    ADD CONSTRAINT "capsula_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 2722 (class 2606 OID 16425)
+-- Name: estoque capsulas_estoque_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."estoque"
+    ADD CONSTRAINT "capsulas_estoque_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 2720 (class 2606 OID 16417)
+-- Name: capsulareceita capsulas_receita_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."capsulareceita"
+    ADD CONSTRAINT "capsulas_receita_pkey" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 2718 (class 2606 OID 16409)
+-- Name: receita receita_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "public"."receita"
+    ADD CONSTRAINT "receita_pkey" PRIMARY KEY ("ID");
+
+
+-- Completed on 2020-01-13 23:23:11
+
+--
+-- PostgreSQL database dump complete
+--
+

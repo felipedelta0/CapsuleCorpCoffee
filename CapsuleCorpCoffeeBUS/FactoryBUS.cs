@@ -13,6 +13,7 @@ namespace CapsuleCorpCoffeeBUS
         {
             return new EstoqueBUS();
         }
+
         public static ReceitaBUS CreateReceitaBUS()
         {
             return new ReceitaBUS();

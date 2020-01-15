@@ -32,9 +32,9 @@ namespace CapsuleCorpCoffeeDTO.Classes
 
         public Avaliacao(DataRow row)
         {
-            ID = Int32.Parse(row["ID"].ToString());
-            Nota = Int32.Parse(row["Nota"].ToString());
-            Receita = Int32.Parse(row["Receita_ID"].ToString());
+            ID = int.Parse(row["ID"].ToString());
+            Nota = int.Parse(row["Nota"].ToString());
+            Receita = int.Parse(row["Receita_ID"].ToString());
             Usuario = row["Usuario"].ToString();
             Comentario = row["Comentario"].ToString();
         }

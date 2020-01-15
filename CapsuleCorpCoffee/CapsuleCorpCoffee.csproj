@@ -146,6 +146,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,7 +162,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Recursos\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +173,20 @@
       <Project>{C0042A3C-B80D-4AD5-9B19-96B44105EB5A}</Project>
       <Name>CapsuleCorpCoffeeDTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\capsula.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\estoque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\receita.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Recursos\sair.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

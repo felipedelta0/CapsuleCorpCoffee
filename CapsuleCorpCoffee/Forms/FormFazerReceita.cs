@@ -40,14 +40,13 @@ namespace CapsuleCorpCoffee.Forms
 
         private void btnFazer_Click(object sender, EventArgs e)
         {
-            int quantidade;
-            Int32.TryParse(cmbQuantidade.Text.ToString(), out quantidade);
+            int.TryParse(cmbQuantidade.Text.ToString(), out int quantidade);
             Receita receita = (Receita)cmbReceitas.SelectedItem;
 
             if (ValidarCampos(receita, quantidade))
             {
                 List<CapsulaReceita> capsulas = this.capsulaReceitaBUS.ListarPorReceita(receita.ID);
-                
+
                 if (this.ChecarQuantidades(capsulas, quantidade))
                 {
                     FazerReceita(capsulas, quantidade);

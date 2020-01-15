@@ -42,9 +42,8 @@ namespace CapsuleCorpCoffee.Forms
         #region Eventos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            int forca;
             this.Capsula.Descricao = txtDescricao.Text.Trim();
-            Int32.TryParse(cmbForca.Text.ToString(), out forca);
+            int.TryParse(cmbForca.Text.ToString(), out int forca);
             this.Capsula.Forca = forca;
 
             if (capsulaBUS.ValidarCampos(this.Capsula))

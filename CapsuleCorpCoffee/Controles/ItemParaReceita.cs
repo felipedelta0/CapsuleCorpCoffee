@@ -24,30 +24,34 @@ namespace CapsuleCorpCoffee.Controles
         {
             get
             {
-                int quantidade;
-                Int32.TryParse(txtQuantidade.Text, out quantidade);
+                int.TryParse(txtQuantidade.Text, out int quantidade);
                 return quantidade;
             }
         }
         #endregion
 
         #region Construtores
+
         public ItemParaReceita()
         {
             InitializeComponent();
 
             capsulaBUS = FactoryBUS.CreateCapsulaBUS();
         }
+
         #endregion
 
         #region Eventos
+
         private void ItemParaReceita_Load(object sender, EventArgs e)
         {
             MontarComboBox();
         }
+
         #endregion
 
         #region Métodos
+
         private void MontarComboBox()
         {
             List<Capsula> capsulas = capsulaBUS.Listar();
@@ -67,6 +71,7 @@ namespace CapsuleCorpCoffee.Controles
             if (cmbCapsula.Items.Count > 0)
                 cmbCapsula.SelectedIndex = 0;
         }
+
         #endregion
     }
 }

@@ -121,8 +121,7 @@ namespace CapsuleCorpCoffee.Forms
 
         private void MontarRegistro()
         {
-            int quantidade;
-            Int32.TryParse(txtQuantidade.Text.ToString(), out quantidade);
+            int.TryParse(txtQuantidade.Text.ToString(), out int quantidade);
 
             this.ItemEstoque.Capsula = cmbCapsula.SelectedItem == null ? -1 : ((Capsula)cmbCapsula.SelectedItem).ID;
             this.ItemEstoque.Quantidade = quantidade;

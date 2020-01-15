@@ -163,7 +163,7 @@ namespace CapsuleCorpCoffee.Forms
         {
             int itemID;
             if (dgvReceitas.SelectedRows.Count > 0)
-                Int32.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
+                int.TryParse(dgvReceitas.SelectedRows[0].Cells[0].Value.ToString(), out itemID);
             else
                 itemID = -1;
 

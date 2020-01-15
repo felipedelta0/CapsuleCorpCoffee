@@ -32,10 +32,10 @@ namespace CapsuleCorpCoffeeDTO.Classes
 
         public Estoque(DataRow row)
         {
-            this.ID = Int32.Parse(row["ID"].ToString());
+            this.ID = int.Parse(row["ID"].ToString());
             this.Validade = DateTime.Parse(row["Validade"].ToString());
-            this.Quantidade = Int32.Parse(row["Quantidade"].ToString());
-            this.Capsula = Int32.Parse(row["Capsula"].ToString());
+            this.Quantidade = int.Parse(row["Quantidade"].ToString());
+            this.Capsula = int.Parse(row["Capsula"].ToString());
         }
         #endregion 
     }
